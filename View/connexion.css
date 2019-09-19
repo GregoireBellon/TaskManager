@@ -1,6 +1,36 @@
+
+/*@font-face {
+   font-family: 'PonyMaker';
+   src : url("Ressources/PonyMaker.ttf");
+}*/
+
 body{
     background-color: aliceblue;
+    text-align: center;
+    align-content: center;
+}
+
+div{
+    margin-top: 10%;
 }
 h1{
-    font-family: "French Script MT";
+    font-family: "DejaVu Sans";
+    font-style: italic;
+}
+
+form{
+    margin-left: 37.5%;
+    position: absolute;
+    width: 25%;
+    display: block;
+}
+
+input{
+    margin-top : 1%;
+}
+
+#bouton{
+    background-color: yellowgreen;
+    border-radius: 50%;
+    height: 50px;
 }
