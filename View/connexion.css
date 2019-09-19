@@ -9,7 +9,11 @@ body{
     text-align: center;
     align-content: center;
 }
-
+button {
+    width:110px;
+    cursor:pointer;
+    text-transform:capitalize;
+}
 div{
     margin-top: 10%;
 }
@@ -33,4 +37,14 @@ input{
     background-color: yellowgreen;
     border-radius: 50%;
     height: 50px;
+}
+
+#bouton2 {
+    padding: 6px 0 6px 0;
+    font: bold 13px Arial;
+    background: #478bf9;
+    color: #fff;
+    border-radius: 2px;
+    width: 100px;
+    border: none;
 }
