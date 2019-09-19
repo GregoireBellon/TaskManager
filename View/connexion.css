@@ -9,8 +9,13 @@ body{
     text-align: center;
     align-content: center;
 }
+
+div{
+    margin-top: 10%;
+}
 h1{
     font-family: "DejaVu Sans";
+    font-style: italic;
 }
 
 form{
