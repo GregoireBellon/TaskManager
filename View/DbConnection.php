@@ -3,16 +3,29 @@
 
 class DbConnection
 {
-   public function Connect($serveur, $base, $user, $pass){
+/*
+ * @var : server, dbname, user, pass
+ */
+private $connection;
+   public function __construct($serveur, $base, $user, $pass){
 
-       $mysqli = new mysqli($serveur, $user, $pass, $base);
-       $mysqli ->set_charset("utf8");
 
-       if($mysqli->connect_error) {
-           die('Erreur de connection : '.$mysqli->connect_errno);
+       $connection = new mysqli($serveur, $user, $pass, $base);
+//     $connection ->set_charset("utf8");
+       $this->connection=$connection;
+       if($connection->connect_error) {
+           die('Erreur de connection : '.$connection->connect_errno);
        }
        else{
-           echo "Connected : ".$mysqli->host_info;
+           echo "Connected : ".$connection->host_info;
        }
 }
+
+
+    public function getConnexion()
+    {
+        return $this->connection;
+    }
+
+
 }
