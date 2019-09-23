@@ -5,9 +5,10 @@
 }*/
 
 body{
-    background-color: aliceblue;
+    background-image: url("/Ressources/background.png");
     text-align: center;
     align-content: center;
+
 }
 button {
     width:110px;
@@ -31,12 +32,6 @@ form{
 
 input{
     margin-top : 1%;
-}
-
-#bouton{
-    background-color: yellowgreen;
-    border-radius: 50%;
-    height: 50px;
 }
 
 #bouton2 {
