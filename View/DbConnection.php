@@ -1,31 +1,16 @@
 <?php
+include_once('TestConnexionDb.php');
 
+$db = new PDO("$server:host=$host;dbname=$base",$user,$password);
+$user= $_POST["user"];
+$pass = $_POST["mdp"];
+$sql = "SELECT * FROM Utilisateur WHERE nom_user = '$user' AND mdp_user = '$pass';";
+$result = $db->query($sql);
+$data = $result->fetch();
+if ($result) {
 
-class DbConnection
-{
-/*
- * @var : server, dbname, user, pass
- */
-private $connection;
-   public function __construct($serveur, $base, $user, $pass){
-
-
-       $connection = new mysqli($serveur, $user, $pass, $base);
-//     $connection ->set_charset("utf8");
-       $this->connection=$connection;
-       if($connection->connect_error) {
-           die('Erreur de connection : '.$connection->connect_errno);
-       }
-       else{
-           echo "Connected : ".$connection->host_info;
-       }
+} else {
+    echo "Login ou mot de passe incorrect :-(";
 }
-
-
-    public function getConnexion()
-    {
-        return $this->connection;
-    }
-
-
-}
+$sql="";
+?>
