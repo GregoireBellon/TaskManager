@@ -1,9 +1,6 @@
 body {
 }
 
-
-.input_home{}
-
 #brand{
     text-align: center;
     margin-top: 11vh;
@@ -48,7 +45,7 @@ body {
     border-radius: 10vw;
 }
 
-#submit_button{
+#submit_button {
     display: block;
     color: white;
     background-color: #4CAF50;
@@ -59,10 +56,7 @@ body {
     height: 5vh;
     width: 80%;
     border-radius: 10vw;
-
-
-
-}
-.input_home[onfocus]{
-
+    font-family: "DejaVu Serif";
+    font-size: 1em;
+    font-style: oblique;
 }
