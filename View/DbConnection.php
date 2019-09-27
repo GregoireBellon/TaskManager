@@ -8,7 +8,7 @@ $sql = "SELECT * FROM Utilisateur WHERE nom_user = '$user' AND mdp_user = '$pass
 $result = $db->query($sql);
 $data = $result->fetch();
 if ($result) {
-
+    echo "Vous êtes connectés";
 } else {
     echo "Login ou mot de passe incorrect :-(";
 }
