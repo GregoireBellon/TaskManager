@@ -6,10 +6,8 @@ body {
 
 #brand{
     text-align: center;
-    margin-left:  auto;
-    margin-right: auto;
     margin-top: 11vh;
-    width: 40vw;
+    width: auto;
     flex-wrap: wrap;
     font-size: 3em;
 
@@ -17,25 +15,54 @@ body {
 
 #connection_img{
     height: 17vh;
+    display: block;
+
     align-content: center;
     margin-right: auto;
     margin-left: auto;
+    padding-left: auto;
+    padding-right: auto;
     width: auto;
     display: block;
+    align-content: center;
 }
 
 #form_connection{
-    margin-top: 7vh;
+    margin-top: 5vh;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 17vw;
-    box-sizing: border-box;
-    border-radius: 10px;
+    width: 23vw;
 }
 
-.input_home{
+.input_home {
+    display: block;
+    padding-right: 3%;
+    padding-left: 3%;
     margin-top: 3vh;
+    margin-left : auto;
+    margin-right : auto;
+    width: 80%;
+    height: 5vh;
+    border: 2px solid dimgrey;
+    border-radius: 10vw;
+}
+
+#submit_button{
+    display: block;
+    color: white;
+    background-color: #4CAF50;
     width: 100%;
-    height: 3vh;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 7vh;
+    height: 5vh;
+    width: 80%;
+    border-radius: 10vw;
+
+
+
+}
+.input_home[onfocus]{
+
 }
