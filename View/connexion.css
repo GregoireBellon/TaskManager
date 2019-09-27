@@ -61,6 +61,8 @@ h1{
     margin-left: auto;
     margin-right: auto;
     width: 17vw;
+    box-sizing: border-box;
+    border-radius: 10px;
 }
 
 .input_home{
