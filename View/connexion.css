@@ -1,50 +1,39 @@
+body {
+}
 
-/*@font-face {
-   font-family: 'PonyMaker';
-   src : url("Ressources/PonyMaker.ttf");
-}*/
 
-body{
-    background-color: aliceblue;
+.input_home{}
+
+#brand{
     text-align: center;
-    align-content: center;
-}
-button {
-    width:110px;
-    cursor:pointer;
-    text-transform:capitalize;
-}
-div{
-    margin-top: 10%;
-}
-h1{
-    font-family: "DejaVu Sans";
-    font-style: italic;
+    margin-left:  auto;
+    margin-right: auto;
+    margin-top: 11vh;
+    width: 40vw;
+    flex-wrap: wrap;
+    font-size: 3em;
+
 }
 
-form{
-    margin-left: 37.5%;
-    position: absolute;
-    width: 25%;
+#connection_img{
+    height: 17vh;
+    align-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    width: auto;
     display: block;
 }
 
-input{
-    margin-top : 1%;
+#form_connection{
+    margin-top: 7vh;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 17vw;
 }
 
-#bouton{
-    background-color: yellowgreen;
-    border-radius: 50%;
-    height: 50px;
-}
-
-#bouton2 {
-    padding: 6px 0 6px 0;
-    font: bold 13px Arial;
-    background: #478bf9;
-    color: #fff;
-    border-radius: 2px;
-    width: 100px;
-    border: none;
+.input_home{
+    margin-top: 3vh;
+    width: 100%;
+    height: 3vh;
 }
