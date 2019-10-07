@@ -6,8 +6,8 @@ $_SESSION['password'] = $_POST['password'];
 //echo 'username = '.$_SESSION[username];
 
 if (isset($_POST['sign_button'])) {
-    header('Location: signin.php');
+    header('Location: ../Pages/pageSignin.php');
 }
 elseif (isset($_POST['connec_button'])) {
-    header('Location: ../DbConnection.php');
+    header('Location: DbConnection.php');
 }
