@@ -44,19 +44,26 @@ body {
     border: 2px solid dimgrey;
     border-radius: 10vw;
 }
-
-#submit_button {
+#submit_buttons{
+    margin-top: 6vh;
+}
+.submit {
     display: block;
+    border-style: solid;
     color: white;
-    background-color: #4CAF50;
-    width: 100%;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 7vh;
+    margin-top: 1vh;
     height: 5vh;
-    width: 80%;
+    width: 60%;
     border-radius: 10vw;
     font-family: "DejaVu Serif";
     font-size: 1em;
     font-style: oblique;
+}
+#connec_button{
+    background-color: #4CAF50;
+}
+#sign_button{
+    background-color: cadetblue;
 }
