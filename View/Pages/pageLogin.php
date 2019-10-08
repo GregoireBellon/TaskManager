@@ -1,5 +1,9 @@
+<?php
+
+?>
+
 <!DOCTYPE html>
-<link href="connexion.css" rel="stylesheet" xmlns="http://www.w3.org/1999/html">
+<link href="pageLogin.css" rel="stylesheet" xmlns="http://www.w3.org/1999/html">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,7 +15,7 @@
 
 <img src="../Ressources/user.png" id="connection_img">
 
-<form id="form_connection" method="post" action="ConnexionRedirect.php">
+<form id="form_connection" method="post" action="../Scripts%20PHP/ConnexionRedirect.php">
     <div id="username_input" >
         <input name="username" class="input" placeholder="Username"/>
     </div>

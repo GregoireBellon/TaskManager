@@ -1,5 +1,9 @@
+<?php
+
+?>
+
 <!DOCTYPE html>
-<link href="TaskListStyle.css" rel="stylesheet" xmlns="http://www.w3.org/1999/html">
+<link href="taskList.css" rel="stylesheet" xmlns="http://www.w3.org/1999/html">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,7 +13,7 @@
 <h1>Listes de <span class="user"></span></h1>
 
 <p class="description">
-   Voici vos listes <span class="user"></span> !
+    Voici vos listes <span class="user"></span> !
 </p>
 
 <ul class="accordion">
@@ -23,11 +27,11 @@
 
     <li>
         <a class="toggle" href="javascript:void(0);">Liste 3</a>
-            </li>
+    </li>
 
     <li>
         <a class="toggle" href="javascript:void(0);">Liste 4</a>
-            </li>
+    </li>
 </ul>
 </body>
 </html>
