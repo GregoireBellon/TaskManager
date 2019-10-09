@@ -21,4 +21,8 @@ class DatabaseManipulation
         $this->connection->query(sprintf($querry, $Username, $Password));
     }
 
+    public function executeQuery($query){
+        error_log(sprintf($query));
+        $this->connection->query(sprintf($query));
+    }
 }
