@@ -22,7 +22,7 @@ class DatabaseManipulation
     }
 
     public function executeQuery($query){
-        error_log(sprintf($query));
-        $this->connection->query(sprintf($query));
+        error_log($query);
+        $this->connection->query($query);
     }
 }
