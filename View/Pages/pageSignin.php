@@ -14,8 +14,8 @@ session_start(); ?>
     <form id="form_connection" method="post" action="../DbConnection.php">
 
         <span class="description">Username <input class="input" name="signin_username" value="<?php echo $_SESSION['username']; ?>"></span>
-        <span class="description">Password<input class="input" name="signing_password" value="<?php echo $_SESSION['password']; ?>"></span>
-        <span class="description">Confirm <input class="input" name="signing_password_confirm"></span>
+        <span class="description">Password<input class="input" type="password" name="signing_password" value="<?php echo $_SESSION['password']; ?>"></span>
+        <span class="description">Confirm <input class="input" type="password" name="signing_password_confirm"></span>
 
         <input class="submit" id="sign_button" value="Sign up" name="signing_submit" type="submit">
 

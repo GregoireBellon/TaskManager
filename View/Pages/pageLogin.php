@@ -12,7 +12,6 @@
 <body>
 
 <div id="brand"> <h1 id="title">TaskManager</h1> </div>
-
 <img src="../Ressources/user.png" id="connection_img">
 
 <form id="form_connection" method="post" action="../Scripts%20PHP/ConnexionRedirect.php">
