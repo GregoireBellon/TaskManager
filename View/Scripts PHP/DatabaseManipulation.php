@@ -16,9 +16,9 @@ class DatabaseManipulation
 
     public function addUser($Username, $Password){
 
-        $querry = 'INSERT INTO `User` (`username`, `password`) VALUES (\'%s\', \'%s\');';
-        error_log(sprintf($querry, $Username, $Password));
-        $this->connection->query(sprintf($querry, $Username, $Password));
+        $query = 'INSERT INTO `User` (`username`, `password`) VALUES (\'%s\', \'%s\');';
+        error_log(sprintf($query, $Username, $Password));
+        $this->connection->query(sprintf($query, $Username, $Password));
     }
 
 }
