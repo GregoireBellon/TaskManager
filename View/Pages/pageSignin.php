@@ -11,7 +11,8 @@ session_start(); ?>
 <div id="brand"><h1 id="title">Sign up</h1></div>
 <div id="form_connection">
 
-    <form id="form_connection" method="post" action="../DbConnection.php">
+
+    <form id="form_connection" method="post" action="../Scripts%20PHP/ConnexionRedirect.php">
 
         <span class="description">Username <input class="input" name="signin_username" value="<?php echo $_SESSION['username']; ?>"></span>
         <span class="description">Password<input class="input" type="password" name="signing_password" value="<?php echo $_SESSION['password']; ?>"></span>
