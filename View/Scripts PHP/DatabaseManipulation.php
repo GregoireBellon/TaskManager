@@ -24,4 +24,8 @@ class DatabaseManipulation
         return $result;
     }
 
+    public function executeQuery($query){
+        error_log($query);
+        $this->connection->query($query);
+    }
 }
