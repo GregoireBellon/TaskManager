@@ -15,8 +15,10 @@ session_start(); ?>
     <form id="form_connection" method="post" action="../Scripts%20PHP/ConnexionRedirect.php">
 
         <span class="description">Username <input class="input" name="signin_username" value="<?php echo $_SESSION['username']; ?>"></span>
+        <span class="error"><?php echo $_SESSION['username_error']?></span>
         <span class="description">Password<input class="input" type="password" name="signing_password" value="<?php echo $_SESSION['password']; ?>"></span>
         <span class="description">Confirm <input class="input" type="password" name="signing_password_confirm"></span>
+        <span class="error"><?php echo $_SESSION['password_not_same']?></span>
 
         <input class="submit" id="sign_button" value="Sign up" name="signing_submit" type="submit">
 
@@ -25,3 +27,8 @@ session_start(); ?>
 </div>
 </body>
 </html>
+
+<?php
+$_SESSION['password_not_same']="";
+$_SESSION['username_error']="";
+?>
