@@ -1,15 +1,14 @@
 <?php
+    include_once ('.\Scripts PHP\DatabaseManipulation.php');
     session_start();
 
-    require_once 'DatabaseManipulation.php';
-
-    $sqlRqst = "SELECT id_user FROM Utilisateur where nom_user = 'test'";
-
-    echo $sqlRqst;
-
-     $listOfList = "";
-
-
+    $db = new DatabaseManipulation();
+    $db->testInclude();
+    /*
+    $sqlRqst = "SELECT * FROM Utilisateur";
+    $result = $db->executeQuery($sqlRqst);
+    $db->showQuery($result);
+*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
