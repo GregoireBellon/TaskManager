@@ -11,14 +11,14 @@ if (isset($_POST['sign_button'])) {
     header('Location: ../Pages/pageSignin.php');
 }
 else {
-     error_log("IN CONNECT");
      $db = new DatabaseManipulation();
-     $result=$db->connect($_POST['username'], $_POST['password']);
+     $valid_combination=$db->connect($_POST['username'], $_POST['password']);
 
-     if ($result) {
-         echo 'ok';
+     if ($valid_combination==true) {
          header('Location: ../Pages/taskList.php');
      } else {
+         $_SESSION['connection_error']="Bad password/username :-(";
+         header('Location: ../Pages/pageLogin.php');
          echo "Login ou mot de passe incorrect :-(";
      }
 

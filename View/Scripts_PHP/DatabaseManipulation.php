@@ -14,23 +14,26 @@ class DatabaseManipulation
         $dbpass = "S1Mpl€bOOt";
         $db = "TD_GROUPE_PHP";
         $this->connection=new mysqli($dbhost, $dbuser,$dbpass,$db);
-        error_log($this->connection->error);
+        if($this->connection->errno){
+            error_log($this->connection->error);
+    }
     }
 
     public function addUser($Username, $Password){
 
         $query = 'INSERT INTO `Utilisateur` (`nom_user`, `mdp_user`) VALUES (\'%s\', \'%s\');';
         $result=$this->connection->query(sprintf($query, $Username, $Password));
-        error_log($this->connection->error);
+        error_log("Error :".$this->connection->error);
         return $result;
     }
 
     public function connect($Username, $Password){
         $query =  'SELECT * FROM `Utilisateur` WHERE `nom_user` = \'%s\' AND mdp_user = \'%s\';';
-        error_log("NOMBRE DE RESULTATS CONNEXION : ".$this->connection->field_count==1);
-        error_log($this->connection->error);
+        $query= sprintf($query, $Username, $Password);
+        $result=$this->connection->query($query);
 
-        if($this->connection->field_count==1){
+        if($result->num_rows ==1){
+            error_log($Username." connected");
             return true;
         }
         return false;
