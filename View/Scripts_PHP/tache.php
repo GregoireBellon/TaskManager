@@ -1,6 +1,6 @@
 <?php
 
-include_once('./Scripts PHP/DatabaseManipulation.php');
+include_once('./Scripts_PHP/DatabaseManipulation.php');
 
 class tache
 {

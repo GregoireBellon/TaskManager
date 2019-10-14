@@ -5,7 +5,7 @@ include_once('listeTaches.php');
 
 class DatabaseManipulation
 {
-    private $connection;
+    public $connection;
 
     function __construct()
     {
@@ -40,6 +40,12 @@ class DatabaseManipulation
         }
     }
 
+    public function afficherListe(){
+        $query = 'SELECT * FROM Utilisateur;';
+        $db=$this->connection->query($query);
+        return $db;
+    }
+
     public function addList($list)
     {
         $query = 'INSERT INTO `Lists` (`nom_liste`, `date_creation` VALUES (\'%s\', \'%s\');';
@@ -50,6 +56,7 @@ class DatabaseManipulation
     public function executeQuery($query){
         error_log($query);
         $this->connection->query($query);
+        return $this->connection->query($query);
     }
 
     public function testInclude()

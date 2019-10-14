@@ -12,7 +12,7 @@ session_start(); ?>
 <div id="form_connection">
 
 
-    <form id="form_connection" method="post" action="../Scripts%20PHP/ConnexionRedirect.php">
+    <form id="form_connection" method="post" action="../Scripts_PHP/ConnexionRedirect.php">
 
         <span class="description">Username <input class="input" name="signin_username" value="<?php echo $_SESSION['username']; ?>" required></span>
         <span class="error"><?php echo $_SESSION['username_error']?></span>
