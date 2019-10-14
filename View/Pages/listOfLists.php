@@ -1,5 +1,5 @@
 <?php
-    include_once ('.\Scripts PHP\DatabaseManipulation.php');
+  /*  include_once ('.\Scripts PHP\DatabaseManipulation.php');*/
     session_start();
 
     $db = new DatabaseManipulation();

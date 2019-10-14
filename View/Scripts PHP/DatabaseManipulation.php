@@ -1,5 +1,5 @@
 <?php
-
+/*NOTES : LE LOG EST ACCESSIBLE VIA /var/log/apache2 c'est le fichier error log*/
 include_once('tache.php');
 include_once('listeTaches.php');
 
@@ -20,17 +20,17 @@ class DatabaseManipulation
     public function addUser($Username, $Password){
 
         $query = 'INSERT INTO `Utilisateur` (`nom_user`, `mdp_user`) VALUES (\'%s\', \'%s\');';
-        error_log(sprintf($query, $Username, $Password));
         $result=$this->connection->query(sprintf($query, $Username, $Password));
-
+        error_log($this->connection->error);
         return $result;
     }
 
     public function connect($Username, $Password){
         $query =  'SELECT * FROM `Utilisateur` WHERE `nom_user` = \'%s\' AND mdp_user = \'%s\';';
-        error_log(sprintf($query, $Username, $Password));
-        $result = query(sprintf($query, $Username, $Password));
-        if($result){
+        error_log("NOMBRE DE RESULTATS CONNEXION : ".$this->connection->field_count==1);
+        error_log($this->connection->error);
+
+        if($this->connection->field_count==1){
             return true;
         }
         return false;
@@ -60,7 +60,7 @@ class DatabaseManipulation
     }
 
     public function executeQuery($query){
-        error_log($query);
+        error_log($query);                              /*Note : éviter d'afficher les requètes dans le log à l'avenir --> plutôt afficher le rapport d'erreur d'un query*/
         $this->connection->query($query);
     }
 

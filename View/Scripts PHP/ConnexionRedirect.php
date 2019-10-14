@@ -4,32 +4,26 @@ include('DatabaseManipulation.php');
 $password = $_POST['signing_password'];
 $password_conf=$_POST['signing_password_confirm'];
 
-echo
 $_SESSION['username'] = $_POST['username'];
 $_SESSION['password'] = $_POST['password'];
-
-
-
-if (isset($_POST['connecbutton'])) {
-   /* error_log("IN CONNECT IF");
-    $db = new DatabaseManipulation();
-    $result=$db->connect($_POST['username'], $_POST['password']);
-
-    if ($result) {
-        echo 'ok';
-        header('Location: ../Pages/taskList.php');
-    } else {
-        echo "Login ou mot de passe incorrect :-(";
-        return;
-    }
-
-    header('Location: DbConnection.php');*/
-   echo 'yo';
-}
 
 if (isset($_POST['sign_button'])) {
     header('Location: ../Pages/pageSignin.php');
 }
+else {
+     error_log("IN CONNECT");
+     $db = new DatabaseManipulation();
+     $result=$db->connect($_POST['username'], $_POST['password']);
+
+     if ($result) {
+         echo 'ok';
+         header('Location: ../Pages/taskList.php');
+     } else {
+         echo "Login ou mot de passe incorrect :-(";
+     }
+
+}
+
 
 if ((isset($_POST['signing_submit']))){
 
