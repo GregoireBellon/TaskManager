@@ -14,7 +14,7 @@ if (isset($_POST['connecbutton'])) {
 
     if ($result) {
         echo 'ok';
-        header('Location: ../Pages/listOfList.php');
+        header('Location: ../Pages/listOfLists.php');
     } else {
         echo "Login ou mot de passe incorrect :-(";
         return;
@@ -31,10 +31,10 @@ else {
      $valid_combination=$db->connect($_POST['username'], $_POST['password']);
 
      if ($valid_combination==true) {
-         header('Location: ../Pages/taskList.php');
+         header('Location: ../Pages/listOfLists.php');
      } else {
          $_SESSION['connection_error']="Bad password/username :-(";
-         header('Location: listOfLists.php');
+         header('Location: ../Pages/listOfLists.php');
          echo "Login ou mot de passe incorrect :-(";
      }
 

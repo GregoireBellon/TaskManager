@@ -63,7 +63,7 @@ class DatabaseManipulation
 
     public function addList($list)
     {
-        $query = 'INSERT INTO `Lists` (`nom_liste`, `date_creation` VALUES (\'%s\', \'%s\');';
+        $query = 'INSERT INTO `Lists` (`nom_liste`, `date_creation`) VALUES (\'%s\', \'%s\');';
         error_log(sprintf($query, $list->getNomListe(), $list->getDateCreation()));
         $this->connection->query(sprintf($query, $list->getNomListe(), $list->getDateCreation()));
     }

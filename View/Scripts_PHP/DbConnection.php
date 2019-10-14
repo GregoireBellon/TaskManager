@@ -9,7 +9,7 @@ include_once('TestConnexionDb.php');
     $result = $db->query($sql);
     $data = $result->fetch();
     if ($result) {
-        header('Location: ../Pages/taskList.php');
+        header('Location: ../Pages/listOfLists.php');
     } else {
         echo "Login ou mot de passe incorrect :-(";
     }
