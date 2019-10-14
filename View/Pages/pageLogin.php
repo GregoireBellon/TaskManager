@@ -17,7 +17,11 @@ session_start();
 <div id="brand"> <h1 id="title">TaskManager</h1> </div>
 <img src="../Ressources/user.png" id="connection_img">
 
+<<<<<<< HEAD
+<form id="form_connection" method="post" action="../Scripts_PHP/ConnexionRedirect.php">
+=======
 <form id="form_connection" method="get" action="../Scripts%20PHP/ConnexionRedirect.php">
+>>>>>>> c00b52aad5094977ed9daefcec68f3a7f3128268
     <div id="username_input" >
         <input name="username" class="input" placeholder="Username"/>
     </div>
