@@ -1,5 +1,5 @@
 <?php
-    include_once('DatabaseManipulation.php');
+    include_once('../Scripts_PHP/DatabaseManipulation.php');
     session_start();
     $db = new DatabaseManipulation();
     $nomdutype = 'admin';
