@@ -7,8 +7,6 @@ $password_conf=$_POST['signing_password_confirm'];
 $_SESSION['username'] = $_POST['username'];
 $_SESSION['password'] = $_POST['password'];
 
-
-
 if (isset($_POST['connecbutton'])) {
     error_log("IN CONNECT IF");
     $db = new DatabaseManipulation();
@@ -28,6 +26,20 @@ if (isset($_POST['connecbutton'])) {
 if (isset($_POST['sign_button'])) {
     header('Location: ../Pages/pageSignin.php');
 }
+else {
+     $db = new DatabaseManipulation();
+     $valid_combination=$db->connect($_POST['username'], $_POST['password']);
+
+     if ($valid_combination==true) {
+         header('Location: ../Pages/taskList.php');
+     } else {
+         $_SESSION['connection_error']="Bad password/username :-(";
+         header('Location: listOfLists.php');
+         echo "Login ou mot de passe incorrect :-(";
+     }
+
+}
+
 
 if ((isset($_POST['signing_submit']))){
 

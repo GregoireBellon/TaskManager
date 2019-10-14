@@ -1,7 +1,7 @@
 <?php
-
+/*NOTES : LE LOG EST ACCESSIBLE VIA /var/log/apache2 c'est le fichier error log*/
 include_once('tache.php');
-include_once('listeTaches.php');
+include_once('TaskList.php');
 
 class DatabaseManipulation
 {
@@ -14,23 +14,26 @@ class DatabaseManipulation
         $dbpass = "S1Mpl€bOOt";
         $db = "TD_GROUPE_PHP";
         $this->connection=new mysqli($dbhost, $dbuser,$dbpass,$db);
-        error_log($this->connection->error);
+        if($this->connection->errno){
+            error_log($this->connection->error);
+    }
     }
 
     public function addUser($Username, $Password){
 
         $query = 'INSERT INTO `Utilisateur` (`nom_user`, `mdp_user`) VALUES (\'%s\', \'%s\');';
-        error_log(sprintf($query, $Username, $Password));
         $result=$this->connection->query(sprintf($query, $Username, $Password));
-
+        error_log("Error :".$this->connection->error);
         return $result;
     }
 
     public function connect($Username, $Password){
         $query =  'SELECT * FROM `Utilisateur` WHERE `nom_user` = \'%s\' AND mdp_user = \'%s\';';
-        error_log(sprintf($query, $Username, $Password));
-        $result = query(sprintf($query, $Username, $Password));
-        if($result){
+        $query= sprintf($query, $Username, $Password);
+        $result=$this->connection->query($query);
+
+        if($result->num_rows ==1){
+            error_log($Username." connected");
             return true;
         }
         return false;
@@ -66,7 +69,7 @@ class DatabaseManipulation
     }
 
     public function executeQuery($query){
-        error_log($query);
+        error_log($query);                              /*Note : éviter d'afficher les requètes dans le log à l'avenir --> plutôt afficher le rapport d'erreur d'un query*/
         $this->connection->query($query);
         return $this->connection->query($query);
     }
