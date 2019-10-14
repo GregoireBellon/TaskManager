@@ -1,7 +1,6 @@
 <?php
 
-
-class listeTaches
+class TaskList
 {
     private $nomListe;
     private $dateCreation;

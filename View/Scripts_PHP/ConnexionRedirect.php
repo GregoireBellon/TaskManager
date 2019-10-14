@@ -18,7 +18,7 @@ else {
          header('Location: ../Pages/taskList.php');
      } else {
          $_SESSION['connection_error']="Bad password/username :-(";
-         header('Location: ../Pages/pageLogin.php');
+         header('Location: listOfLists.php');
          echo "Login ou mot de passe incorrect :-(";
      }
 
