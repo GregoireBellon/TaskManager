@@ -26,6 +26,18 @@ class DatabaseManipulation
         return $result;
     }
 
+    public function connect($Username, $Password){
+        $query =  'SELECT * FROM `Utilisateur` WHERE `nom_user` = \'%s\' AND mdp_user = \'%s\';';
+        error_log(sprintf($query, $Username, $Password));
+        $result = query(sprintf($query, $Username, $Password));
+        if($result){
+            return true;
+        }
+        return false;
+
+    }
+
+
     public function addTask($tache)
     {
         if(is_object($tache))
