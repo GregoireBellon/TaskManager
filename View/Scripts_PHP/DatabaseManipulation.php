@@ -27,6 +27,15 @@ class DatabaseManipulation
         return $result;
     }
 
+    public function addTask($nom, $idListe, $description, $dateDeb, $dateFin, $statut){
+        $querry = "INSERT INTO `Tache` (`id_tache`, `nom_tache`, `id_liste`, `des_tache`, `date_debut`, `date_fin`, `statut`) VALUES ('', '%s', '', '%s', '%s', '%s', '%s')";
+        $querry = sprintf($querry, $this->nom, $this->description, $this->dateDeb, $this->dateFin, $this->statut);
+        $this->connection->query($querry);
+        if($this->connection->errno){
+            error_log($this->connection->error);
+        }
+    }
+
     public function connect($Username, $Password){
         $query =  'SELECT * FROM `Utilisateur` WHERE `nom_user` = \'%s\' AND mdp_user = \'%s\';';
         $query= sprintf($query, $Username, $Password);
