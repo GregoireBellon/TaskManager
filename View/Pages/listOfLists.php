@@ -2,7 +2,7 @@
     include_once('../Scripts_PHP/DatabaseManipulation.php');
     session_start();
     $db = new DatabaseManipulation();
-    $nomdutype = 'admin';
+    $nomdutype = $_SESSION['username'];
     $_SESSION['username']=$nomdutype;
 $sqlRqst="SELECT * FROM Liste as A NATURAL JOIN Privileges as B NATURAL 
 JOIN Utilisateur as C WHERE A.id_liste=B.id_liste AND B.id_user=C.id_user AND C.nom_user='admin'";
