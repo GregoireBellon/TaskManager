@@ -7,11 +7,10 @@
         $nomListe= "Pas de nom";
         return;
     }
-
         $newList = new TaskList($nomListe, "15/10/2019");
         $db->addList($newList);
         header('Location: ../Pages/listOfLists.php');
-    
+
 ?>
 <body>
     <form action="ajoutListe.php">
