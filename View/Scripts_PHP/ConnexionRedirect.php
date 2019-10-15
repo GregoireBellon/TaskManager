@@ -16,7 +16,8 @@ if (isset($_POST['connecbutton'])) {
         echo 'ok';
         header('Location: ../Pages/listOfLists.php');
     } else {
-        echo "Login ou mot de passe incorrect :-(";
+        $_SESSION['connection_error']="Bad password/username :-(";
+        header('Location: ../Pages/pageLogin.php');
         return;
     }
 

@@ -26,8 +26,11 @@ session_start();
             <input name="password" class="input" type="password"  placeholder="password"/>
         </div>
         <div id="submit_buttons">
-            <input name="connecbutton" value="Connection" class="submit" id="connec_button" type="submit">
-            <input name="sign_button" value="Sign_in" class="submit" id="sign_button" type="submit">
+            <input name="connecbutton" value="Connection" class="submit" id="connec_button" type="submit"> <br>
+            <input name="sign_button" value="Sign_in" class="submit" id="sign_button" type="submit"> <br>
+
+            <?php echo $_SESSION['connection_error']?>
+
         </div>
     </form>
     </body>

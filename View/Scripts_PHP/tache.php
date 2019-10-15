@@ -37,7 +37,7 @@ class tache
         $querry = "INSERT INTO `Tache` (`id_tache`, `nom_tache`, `id_liste`, `des_tache`, `date_debut`, `date_fin`, `statut`) VALUES ('', '%s', '', '%s', '%s', '%s', '%s')";
         $querry = sprintf($querry, $this->nom, $this->description, $this->dateDeb, $this->dateFin, $this->statut);
 
-        $this->db-
+      //  $this->db-
     }
 
     /**
