@@ -3,10 +3,11 @@
 include_once('tache.php');
 include_once('TaskList.php');
 
+
 class DatabaseManipulation
 {
     public $connection;
-
+    public $nbrListe;
     function __construct()
     {
         $dbhost = "localhost";
@@ -16,6 +17,7 @@ class DatabaseManipulation
         $this->connection=new mysqli($dbhost, $dbuser,$dbpass,$db);
         if($this->connection->errno){
             error_log($this->connection->error);
+        $nbrListe = $this->connection->query('SELECT MAX(id_liste) AS id_liste FROM Liste')->fetch_field();
     }
     }
 
@@ -49,21 +51,6 @@ class DatabaseManipulation
 
     }
 
-
-    public function addTask($tache)
-    {
-        if(is_object($tache))
-        {
-            $query = 'INSERT INTO `Tasks` (`nom_tache`, `id_liste`, `des_tache`, `date_debut`, `date_debut`, `statut`) VALUES (\'%s\', \'%s\', \'%s\', \'%s\', \'%s\', \'%s\');';
-            error_log(sprintf($query, $tache->getNom(), $tache->getIdListe(), $tache->getDescription(), $tache->getDateDeb(), $tache->getDateFin(), $tache->getStatut()));
-            $this->connection->query(sprintf($query, $tache->getNom(), $tache->getIdListe(), $tache->getDescription(), $tache->getDateDeb(), $tache->getDateFin(), $tache->getStatut()));
-        }
-        else
-        {
-
-        }
-    }
-
     public function afficherListe(){
         $query = 'SELECT * FROM Utilisateur;';
         $db=$this->connection->query($query);
@@ -72,9 +59,9 @@ class DatabaseManipulation
 
     public function addList($list)
     {
-        $query = 'INSERT INTO `Lists` (`nom_liste`, `date_creation`) VALUES (\'%s\', \'%s\');';
-        error_log(sprintf($query, $list->getNomListe(), $list->getDateCreation()));
-        $this->connection->query(sprintf($query, $list->getNomListe(), $list->getDateCreation()));
+        $query = 'INSERT INTO `Liste` (`nom_liste`) VALUES (\'%s\');';
+        //error_log(sprintf($query, $list->getNomListe(), $list->getDateCreation()));
+        $this->connection->query(sprintf($query, $list->getNomListe()));
     }
 
     public function executeQuery($query){

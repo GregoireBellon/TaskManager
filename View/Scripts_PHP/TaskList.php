@@ -10,14 +10,11 @@ class TaskList
     //DatabaseManipulation qui permettra d'ajouter la liste à la bdd dès sa création
     private $db;
 
-    public function __construct($nomListe, $dateCreation)
+    public function __construct($nomListe)
     {
         $db = new DatabaseManipulation();
 
         $this->nomListe = $nomListe;
-        $this->dateCreation = $dateCreation;
-
-        $db->addList($this->nomListe, $this->dateCreation);
     }
 
     public function addTask($tache)

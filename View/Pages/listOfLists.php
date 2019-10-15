@@ -32,8 +32,8 @@ while($row = mysqli_fetch_array($result))
 
         ?>
     </ol>
-<form action="../Scripts_PHP/ajoutListe.php">
-    <button type="submit">Ajouter une liste</button>
+<form action="pageAjoutListe.php">
+    <button type="submit" href="../Scripts_PHP/ajoutListe.php">Ajouter une liste</button>
 </form>
 </body>
 </html>
