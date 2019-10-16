@@ -1,0 +1,83 @@
+body {
+}
+
+#brand{
+    text-align: center;
+    margin-top: 11vh;
+    width: auto;
+    flex-wrap: wrap;
+    font-size: 3em;
+
+}
+
+#connection_img{
+    height: 17vh;
+    display: block;
+
+    align-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: auto;
+    padding-right: auto;
+    width: auto;
+    display: block;
+    align-content: center;
+}
+
+#formConnection{
+    margin-top: 5vh;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 23vw;
+
+}
+
+.input {
+    display: block;
+    padding-right: 3%;
+    padding-left: 3%;
+    margin-top: 3vh;
+    margin-left : auto;
+    margin-right : auto;
+    width: 80%;
+    height: 5vh;
+    border: 2px solid dimgrey;
+    border-radius: 10vw;
+}
+#submit_buttons{
+    margin-top: 6vh;
+}
+.submit {
+    display: block;
+    border-style: solid;
+    color: white;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 1vh;
+    height: 5vh;
+    width: 60%;
+    border-radius: 10vw;
+    font-family: "DejaVu Serif";
+    font-size: 1em;
+    font-style: oblique;
+}
+#connecButton{
+    background-color: #4CAF50;
+}
+#signButton{
+    background-color: cadetblue;
+}
+.description{
+    font-size: 2em;
+}
+
+.error{
+    color: #f74040;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 0.8em;
+    font-family: "DejaVu Serif";
+    position: absolute;
+    margin-left: 1.35%;
+}
