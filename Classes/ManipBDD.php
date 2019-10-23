@@ -27,6 +27,17 @@ class ManipBDD
         else return false;
     }
 
+    public function ajouterUtilisateur($username, $motDePasse){
+        $requete = "INSERT INTO Utilisateur (nom_user,mdp_user) VALUES('$username','$motDePasse');";
+        $this->connection->query($requete);
+    }
+
+    public function verifUniciteUser ($username){
+        $requete = "SELECT * FROM Utilisateur WHERE nom_user = '$username'";
+        $resultat = $this->connection->query($requete)->fetch_row();
+        if ($resultat) return false;
+        else return true;
+    }
     // Fonctions de récupérations d'attribut
 
     public function getIdUser($username){
@@ -35,5 +46,15 @@ class ManipBDD
         $resultat = $this->connection->query($requete);
         $id = $resultat->fetch_row();
         return $id[0];
+    }
+
+
+    public function getListes($username)
+    {
+        //Permet de récupérer les listes d'un utilisateur
+        $requete = "SELECT * FROM Liste as A NATURAL JOIN Privileges as B NATURAL 
+JOIN Utilisateur as C WHERE A.id_liste=B.id_liste AND B.id_user=C.id_user AND C.nom_user=".$username;
+        $resultat = $this->connection->query($requete);
+        return $resultat;
     }
 }
