@@ -35,8 +35,8 @@ class ManipBDD
     public function verifUniciteUser ($username){
         $requete = "SELECT * FROM Utilisateur WHERE nom_user = '$username'";
         $resultat = $this->connection->query($requete)->fetch_row();
-        if ($resultat) return true;
-        else return false;
+        if ($resultat) return false;
+        else return true;
     }
     // Fonctions de récupérations d'attribut
 
