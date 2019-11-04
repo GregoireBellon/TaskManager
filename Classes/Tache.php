@@ -12,8 +12,6 @@ class Tache
         $this->nom = $nom;
         $this->description = $description;
         $this->dateFin = $dateFin;
-
-
         //echo "Nom tache : ".$this->nom." | Description : ".$this->description." | Date : ".$this->date;
     }
 
