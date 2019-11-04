@@ -39,8 +39,8 @@ class ManipBDD
         else return true;
     }
 
-    // Fonctions de récupérations d'attribut
 
+    // Fonctions de récupérations d'attribut
     public function getIdUser($username){
         // Permet de récupérer l'id (attribut id_user) de l'utilisateur passé en paramètre
         $requete = "SELECT id_user FROM Utilisateur WHERE nom_user ='$username';";
@@ -49,7 +49,7 @@ class ManipBDD
         return $id[0];
     }
 
-<<<<<<< HEAD
+
     // Fonction d'ajout de liste dans la table 'Liste'
     public function ajouterListe($idListe, $nomListe, $dateCreationListe)
     {
@@ -58,15 +58,31 @@ class ManipBDD
     }
 
 
-=======
-
     public function getListes($username)
     {
         //Permet de récupérer les listes d'un utilisateur
-        $requete = "SELECT * FROM Liste as A NATURAL JOIN Privileges as B NATURAL 
-JOIN Utilisateur as C WHERE C.nom_user=".$username."AND A.id_liste=B.id_liste AND B.id_user=C.id_user";
+        $requete = "SELECT * FROM Liste as A NATURAL JOIN Privileges as B NATURAL JOIN Utilisateur as C WHERE C.nom_user=".$username."AND A.id_liste=B.id_liste AND B.id_user=C.id_user";
         $resultat = $this->connection->query($requete);
         return $resultat;
     }
->>>>>>> e51d13999bc3abd334c1c2327ce863db9ecdf84e
+
+    // Fonction d'ajout de liste dans la table 'Liste'
+    public function ajouterTache($idTache, $nom, $idListe, $description, $dateDeb, $dateFin, $statut)
+    {
+        $requete = "INSERT INTO Tache (id_tache, nom_tache, id_liste, des_tache, date_debut, date_fin, statut) VALUES('$idTache','$nom','$idListe','$description','$dateDeb','$dateFin','$statut');";
+        $this->connection->query($requete);
+    }
+
+
+    public function getTaches($username)
+    {
+        //Permet de récupérer les listes d'un utilisateur
+        $requete = "SELECT * FROM Tache as A NATURAL JOIN Privileges as B NATURAL JOIN Utilisateur as C WHERE C.nom_user=".$username."AND A.id_liste=B.id_liste AND B.id_user=C.id_user";
+        $resultat = $this->connection->query($requete);
+        return $resultat;
+    }
+
+
+
+
 }
