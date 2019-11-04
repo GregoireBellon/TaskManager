@@ -20,22 +20,32 @@ class ManipBDD
     // Fonctions de Manipulation des données
 
     public function verifLogin($username, $motDePasse){
-        // Vérifie que la paire Nom d'Utilisateur / mdp existe dans la base de données
-        $requete = "SELECT * FROM Utilisateur WHERE nom_user = '$username' AND mdp_user = '$motDePasse';";
-        $result = $this->connection->query($requete)->fetch_row();
-        if($result) return true;
-        else return false;
+
+        $query =  'SELECT * FROM `Utilisateur` WHERE `nom_user` = \'%s\' AND mdp_user = \'%s\';';
+        $query= sprintf($query, $username, $motDePasse);
+        $result=$this->connection->query($query);
+        if($result->num_rows ==1){
+            error_log($username." connected");
+            return true;
+        }
+        return false;
     }
 
     public function ajouterUtilisateur($username, $motDePasse){
-        $requete = "INSERT INTO Utilisateur (nom_user,mdp_user) VALUES('$username','$motDePasse');";
-        $this->connection->query($requete);
+
+        $query = 'INSERT INTO `Utilisateur` (`nom_user`, `mdp_user`) VALUES (\'%s\', \'%s\');';
+        $result=$this->connection->query(sprintf($query, $username, $motDePasse));
+
+        if($this->connection->errno){
+            error_log("Error :".$this->connection->error);
+        }
+        return $result;
     }
 
     public function verifUniciteUser ($username){
         $requete = "SELECT * FROM Utilisateur WHERE nom_user = '$username'";
-        $resultat = $this->connection->query($requete)->fetch_row();
-        if ($resultat) return false;
+        $resultat = $this->connection->query($requete);
+        if ($resultat->num_rows>1) return false;
         else return true;
     }
 
