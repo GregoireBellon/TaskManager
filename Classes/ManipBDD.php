@@ -38,6 +38,7 @@ class ManipBDD
         if ($resultat) return false;
         else return true;
     }
+
     // Fonctions de récupérations d'attribut
 
     public function getIdUser($username){
@@ -48,6 +49,16 @@ class ManipBDD
         return $id[0];
     }
 
+<<<<<<< HEAD
+    // Fonction d'ajout de liste dans la table 'Liste'
+    public function ajouterListe($idListe, $nomListe, $dateCreationListe)
+    {
+        $requete = "INSERT INTO Liste (id_liste,nom_liste, date_creation) VALUES('$idListe','$nomListe','$dateCreationListe');";
+        $this->connection->query($requete);
+    }
+
+
+=======
 
     public function getListes($username)
     {
@@ -57,4 +68,5 @@ JOIN Utilisateur as C WHERE C.nom_user=".$username."AND A.id_liste=B.id_liste AN
         $resultat = $this->connection->query($requete);
         return $resultat;
     }
+>>>>>>> e51d13999bc3abd334c1c2327ce863db9ecdf84e
 }
