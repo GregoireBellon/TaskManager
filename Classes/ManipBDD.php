@@ -49,6 +49,7 @@ class ManipBDD
         return $id[0];
     }
 
+<<<<<<< HEAD
     // Fonction d'ajout de liste dans la table 'Liste'
     public function ajouterListe($idListe, $nomListe, $dateCreationListe)
     {
@@ -57,4 +58,15 @@ class ManipBDD
     }
 
 
+=======
+
+    public function getListes($username)
+    {
+        //Permet de récupérer les listes d'un utilisateur
+        $requete = "SELECT * FROM Liste as A NATURAL JOIN Privileges as B NATURAL 
+JOIN Utilisateur as C WHERE A.id_liste=B.id_liste AND B.id_user=C.id_user AND C.nom_user=".$username;
+        $resultat = $this->connection->query($requete);
+        return $resultat;
+    }
+>>>>>>> e51d13999bc3abd334c1c2327ce863db9ecdf84e
 }
