@@ -28,5 +28,8 @@
             }
             ?>
         </ol>
+        <form action="../Scripts/accesTaches.php" method="post" id="boutonDeconnnexion">
+            <p><input type="submit" value="AccesTaches" class="bouton"/></p>
+        </form>
     </body>
 </html>
