@@ -2,14 +2,7 @@
     // Page principale du site (page sur laquelle l'utilisateur arrive près s'être connecté)
     session_start();
     require('../Classes/ManipBDD.php');
-    session_start();
-    $db= new ManipBDD();
-    $result=$db->getListes($_SESSION["username"]);
-    $rows=array();
-    while($row = mysqli_fetch_array($result))
-    {
-        $rows[]=$row;
-    }
+
 ?>
 <!DOCTYPE html>
 <link href="pageLogin.css" rel="stylesheet" xmlns="http://www.w3.org/1999/html">
@@ -27,14 +20,16 @@
             <?php
             $db= new ManipBDD();
             $result=$db->getListes($_SESSION["username"]);
-            $rows=array();
             while($row = mysqli_fetch_array($result))
             {
                 echo "<li>";
-                echo ($row['nom_liste'].' ('.($row['droit']).') ');
+                echo ($row["nom_liste"].'('.$row["droit"]);
                 echo "</li>";
             }
             ?>
         </ol>
+        <form action="../Scripts/accesTaches.php" method="post" id="boutonDeconnnexion">
+            <p><input type="submit" value="AccesTaches" class="bouton"/></p>
+        </form>
     </body>
 </html>
