@@ -4,7 +4,7 @@
 ?>
 
 <!DOCTYPE html>
-<link href="pageLogin.css" rel="stylesheet" xmlns="http://www.w3.org/1999/html">
+<link href="style.css" rel="stylesheet" xmlns="http://www.w3.org/1999/html">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -30,8 +30,8 @@
         </div>
         <p class="error"> <?php echo $_SESSION["error_login"]?></p>
         <div id="submit_buttons">
-            <input name="connecButton" value="Connexion" class="submit" id="connecButton" type="submit"> <br>
-            <input name="signButton" value="S'inscrire" class="submit" id="signButton" type="submit"> <br>
+            <input name="connecButton" value="Connexion"  class="green_button" type="submit"> <br>
+            <input name="signButton" value="S'inscrire"  class="blue_button" type="submit"> <br>
         </div>
     </form>
 </form>

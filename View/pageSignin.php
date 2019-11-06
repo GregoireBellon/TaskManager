@@ -3,7 +3,7 @@
     session_start();
 ?>
 <!DOCTYPE html>
-<link href="pageLogin.css" rel="stylesheet" xmlns="http://www.w3.org/1999/html">
+<link href="style.css" rel="stylesheet" xmlns="http://www.w3.org/1999/html">
 <html lang="fr">
 <head>
     <meta charset="UTF-8">

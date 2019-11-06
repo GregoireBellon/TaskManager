@@ -48,7 +48,7 @@ body {
 #submit_buttons{
     margin-top: 6vh;
 }
-.submit {
+.button {
     display: block;
     border-style: solid;
     color: white;
@@ -62,14 +62,49 @@ body {
     font-size: 1em;
     font-style: oblique;
 }
-#connecButton{
+.green_button{
+    display: block;
+    border-style: solid;
+    color: white;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 1vh;
+    height: 5vh;
+    width: 60%;
+    border-radius: 10vw;
+    font-family: "DejaVu Serif";
+    font-size: 1em;
+    font-style: oblique;
     background-color: #4CAF50;
 }
-#signButton{
+.blue_button{
+    display: block;
+    border-style: solid;
+    color: white;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 1vh;
+    height: 5vh;
+    width: 60%;
+    border-radius: 10vw;
+    font-family: "DejaVu Serif";
+    font-size: 1em;
+    font-style: oblique;
     background-color: cadetblue;
 }
 .description{
     font-size: 2em;
+}
+
+#boutonDeconnnexion{
+    width: min-content;
+    height: min-content;
+    position: absolute;
+    margin-left: 92%;
+}
+
+.bouton{
+    cursor: pointer;
 }
 
 .error{

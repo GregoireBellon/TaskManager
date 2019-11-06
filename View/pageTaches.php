@@ -4,7 +4,7 @@
 ?>
 
 <!DOCTYPE html>
-<link href="pageTaches.css" rel="stylesheet" xmlns="http://www.w3.org/1999/html">
+<link href="style.css" rel="stylesheet" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Youry Taskys</title>
