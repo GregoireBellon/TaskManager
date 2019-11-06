@@ -20,27 +20,37 @@ class ManipBDD
     // Fonctions de Manipulation des données
 
     public function verifLogin($username, $motDePasse){
-        // Vérifie que la paire Nom d'Utilisateur / mdp existe dans la base de données
-        $requete = "SELECT * FROM Utilisateur WHERE nom_user = '$username' AND mdp_user = '$motDePasse';";
-        $result = $this->connection->query($requete)->fetch_row();
-        if($result) return true;
-        else return false;
+
+        $query =  'SELECT * FROM `Utilisateur` WHERE `nom_user` = \'%s\' AND mdp_user = \'%s\';';
+        $query= sprintf($query, $username, $motDePasse);
+        $result=$this->connection->query($query);
+        if($result->num_rows ==1){
+            error_log($username." connected");
+            return true;
+        }
+        return false;
     }
 
     public function ajouterUtilisateur($username, $motDePasse){
-        $requete = "INSERT INTO Utilisateur (nom_user,mdp_user) VALUES('$username','$motDePasse');";
-        $this->connection->query($requete);
+
+        $query = 'INSERT INTO `Utilisateur` (`nom_user`, `mdp_user`) VALUES (\'%s\', \'%s\');';
+        $result=$this->connection->query(sprintf($query, $username, $motDePasse));
+
+        if($this->connection->errno){
+            error_log("Error :".$this->connection->error);
+        }
+        return $result;
     }
 
     public function verifUniciteUser ($username){
         $requete = "SELECT * FROM Utilisateur WHERE nom_user = '$username'";
-        $resultat = $this->connection->query($requete)->fetch_row();
-        if ($resultat) return false;
+        $resultat = $this->connection->query($requete);
+        if ($resultat->num_rows>1) return false;
         else return true;
     }
 
-    // Fonctions de récupérations d'attribut
 
+    // Fonctions de récupérations d'attribut
     public function getIdUser($username){
         // Permet de récupérer l'id (attribut id_user) de l'utilisateur passé en paramètre
         $requete = "SELECT id_user FROM Utilisateur WHERE nom_user ='$username';";
@@ -49,6 +59,7 @@ class ManipBDD
         return $id[0];
     }
 
+<<<<<<< HEAD
     public function getListes($username){
         //Permet de récupérer les listes d'un utilisateur
         $requete = "SELECT * FROM Liste as A NATURAL JOIN Privileges as B NATURAL 
@@ -56,4 +67,42 @@ class ManipBDD
         $resultat = $this->connection->query($requete);
         return $resultat;
     }
+=======
+
+    // Fonction d'ajout de liste dans la table 'Liste'
+    public function ajouterListe($idListe, $nomListe, $dateCreationListe)
+    {
+        $requete = "INSERT INTO Liste (id_liste,nom_liste, date_creation) VALUES('$idListe','$nomListe','$dateCreationListe');";
+        $this->connection->query($requete);
+    }
+
+
+    public function getListes($username)
+    {
+        //Permet de récupérer les listes d'un utilisateur
+        $requete = "SELECT * FROM Liste as A NATURAL JOIN Privileges as B NATURAL JOIN Utilisateur as C WHERE C.nom_user=".$username."AND A.id_liste=B.id_liste AND B.id_user=C.id_user";
+        $resultat = $this->connection->query($requete);
+        return $resultat;
+    }
+
+    // Fonction d'ajout de liste dans la table 'Liste'
+    public function ajouterTache($idTache, $nom, $idListe, $description, $dateDeb, $dateFin, $statut)
+    {
+        $requete = "INSERT INTO Tache (id_tache, nom_tache, id_liste, des_tache, date_debut, date_fin, statut) VALUES('$idTache','$nom','$idListe','$description','$dateDeb','$dateFin','$statut');";
+        $this->connection->query($requete);
+    }
+
+
+    public function getTaches($username)
+    {
+        //Permet de récupérer les listes d'un utilisateur
+        $requete = "SELECT * FROM Tache as A NATURAL JOIN Privileges as B NATURAL JOIN Utilisateur as C WHERE C.nom_user=".$username."AND A.id_liste=B.id_liste AND B.id_user=C.id_user";
+        $resultat = $this->connection->query($requete);
+        return $resultat;
+    }
+
+
+
+
+>>>>>>> 9d89be367996396a87e58e588ff05644a268eac5
 }
