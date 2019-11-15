@@ -9,25 +9,40 @@ class Liste
     private $db;
     private $taches;
 
-    public function __construct($id, $nom, $dateCreation)
+    /**
+     * Liste constructor.
+     * @param $id id de la liste à récup
+     * @param $nom nom de la liste à créer
+     * @param $taches taches dans la liste à insérer
+     */
+    public function __construct($id, $nom, $taches)
     {
+
+        switch (func_num_args()){
+            case 2:
+                $this->creerListe($nom,$taches); //récupérer $nom et $taches
+                break;
+            case 1:
+                $this->recupListe($id);
+        }
+
         $this->id = $id;
         $this->nom = $nom;
-        $this->dateCreation = $dateCreation;
-
         $this->db = new ManipBDD();
-
-        $this->taches=array();
 
 
         //echo "Nom liste : ".$this->nom." | Date de création : ".$this->date;
     }
 
-    public function creerListe($id, $nom, $dateCreation){
+    private function recupListe($id){
 
-        $this->id = $id;
+    }
+
+    public function creerListe($nom, $taches){
+
         $this->nom = $nom;
-        $this->dateCreation = $dateCreation;
+        $this->dateCreation = date("Y-m-d H:i");
+        $this->taches = $taches;
 
     }
 
@@ -37,6 +52,13 @@ class Liste
 
     public function sauvListe(){
         $this->db->ajouterListe($this->id, $this->nom, $this->dateCreation);
+        foreach ($this->taches as $tache){
+            $t = new Tache($tache);
+        }
+    }
+
+    public function afficherListe(){
+        echo $this->nom;
     }
 
 

@@ -60,22 +60,38 @@ class ManipBDD
     }
 
 
+    public function verifExistenceListe($idListe){
+        $requete = "SELECT id_liste FROM Liste WHERE id_list= '$idListe'";
+        $resultat = $this->connection->query($requete);
+        if($resultat->num_rows==1){
+            return true;
+        }
+        return false;
+    }
 
     // Fonction d'ajout de liste dans la table 'Liste'
-    public function ajouterListe($idListe, $nomListe, $dateCreationListe)
+    public function ajouterListe($idListe, $nomListe, $taches)
     {
+
+        $args=func_get_arg();
+
+        switch (func_num_args()){
+
+            case 2:
+
+    }
         $requete = "INSERT INTO Liste (id_liste,nom_liste, date_creation) VALUES('$idListe','$nomListe','$dateCreationListe');";
         $this->connection->query($requete);
     }
 
 
-    public function getListes($username)
+   /* public function getListes($username)
     {
         //Permet de récupérer les listes d'un utilisateur
         $requete = "SELECT * FROM Liste as A NATURAL JOIN Privileges as B NATURAL JOIN Utilisateur as C WHERE C.nom_user=".$username."AND A.id_liste=B.id_liste AND B.id_user=C.id_user";
         $resultat = $this->connection->query($requete);
         return $resultat;
-    }
+    }*/
 
     // Fonction d'ajout de liste dans la table 'Liste'
     public function ajouterTache($idTache, $nom, $idListe, $description, $dateDeb, $dateFin, $statut)
