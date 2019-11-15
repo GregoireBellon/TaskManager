@@ -18,4 +18,4 @@ elseif (isset($_POST['signButton'])) {
     $_SESSION['password'] = $_POST['password'];
     header('Location: ../View/pageSignin.php');
 }
-?>
+
