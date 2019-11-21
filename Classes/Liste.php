@@ -38,6 +38,8 @@ class Liste
 
     private function recupListe($id){
 
+        
+
     }
 
     public function creerListe($nom, $taches){
