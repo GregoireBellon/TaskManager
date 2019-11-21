@@ -20,14 +20,16 @@ class Liste
 
         switch (func_num_args()){
             case 2:
-                $this->creerListe($nom,$taches); //récupérer $nom et $taches
+
+               $this->id= $this->creerListe($nom,$taches); //récupérer $nom et $taches
+
                 break;
             case 1:
                 $this->recupListe($id);
+                $this->id = $id;
+
         }
 
-        $this->id = $id;
-        $this->nom = $nom;
         $this->db = new ManipBDD();
 
 

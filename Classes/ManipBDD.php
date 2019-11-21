@@ -46,7 +46,12 @@ class ManipBDD
         $requete = "SELECT * FROM Utilisateur WHERE nom_user = '$username'";
         $resultat = $this->connection->query($requete);
         if ($resultat->num_rows>1) return false;
-        else return true;
+        return true;
+    }
+
+    public function  getListe($idListe){
+        $requete = "SELECT * FROM Liste WHERE id_list='$idListe'";
+        return $this->querry($requete);
     }
 
 
@@ -69,19 +74,23 @@ class ManipBDD
         return false;
     }
 
-    // Fonction d'ajout de liste dans la table 'Liste'
-    public function ajouterListe($idListe, $nomListe, $taches)
+
+    // Fonction d'ajout et de sauvegarde de liste dans la table 'Liste.
+    // Donner la valeur -1 à idListe si on veut créer une nouvelle dans la BDD
+
+    public function sauvegarderListe($idListe, $nomListe, $date, $taches)
     {
 
-        $args=func_get_arg();
+        if($idListe!=-1){
 
-        switch (func_num_args()){
+            $requete = "UPDATE Liste SET nom_liste = '$nomListe', date_creation ='$date' WHERE id_liste = '$idListe'";
 
-            case 2:
+        }else{
+            $requete = "INSERT INTO Liste (nom_liste, date_creation) VALUES('$nomListe','$date');";
+            $this->connection->query($requete);
 
-    }
-        $requete = "INSERT INTO Liste (id_liste,nom_liste, date_creation) VALUES('$idListe','$nomListe','$dateCreationListe');";
-        $this->connection->query($requete);
+        }
+
     }
 
 
@@ -94,10 +103,20 @@ class ManipBDD
     }*/
 
     // Fonction d'ajout de liste dans la table 'Liste'
-    public function ajouterTache($idTache, $nom, $idListe, $description, $dateDeb, $dateFin, $statut)
+    public function sauvegarderTache($idTache, $nom, $idListe, $description, $dateDeb, $dateFin, $statut)
     {
-        $requete = "INSERT INTO Tache (id_tache, nom_tache, id_liste, des_tache, date_debut, date_fin, statut) VALUES('$idTache','$nom','$idListe','$description','$dateDeb','$dateFin','$statut');";
-        $this->connection->query($requete);
+        if ($idTache == -1) {
+
+            $requete = "INSERT INTO Tache (nom_tache, id_liste, des_tache, date_debut, date_fin, statut) VALUES('$nom','$idListe','$description','$dateDeb','$dateFin','$statut');";
+            $this->connection->query($requete);
+
+
+        } else {
+            $requete = "UPDATE Tache SET nom_tache = '$nom', id_liste = '$idListe', des_tache = '$description', date_debut = '$dateDeb', date_fin = '$dateFin', statut date_creation = '$statut' WHERE id_tache = '$idTache';";
+
+            $this->connection->query($requete);
+        }
+
     }
 
 
