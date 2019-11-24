@@ -20,21 +20,13 @@ session_start();
             <?php
             $db= new ManipBDD();
             $result=$db->getListes($_SESSION["username"]);
-            while($row = mysqli_fetch_array($result))
-            {
-                echo "<li>";
-                echo ($row["nom_liste"].'('.$row["droit"]);
-                echo "</li>";
-            }
             ?>
         </ol>
         <form action="../Scripts/accesTaches.php" method="post" id="boutonDeconnnexion">
             <p><input type="submit" value="AccesTaches" class="bouton"/></p>
         </form>
-
-
-        <?php
-        // Page principale du site (page sur laquelle l'utilisateur arrive près s'être connecté)
+    <?php
+      // Page principale du site (page sur laquelle l'utilisateur arrive près s'être connecté)
         function afficherListes($params)
         {
             $db = new ManipBDD();
@@ -99,21 +91,14 @@ session_start();
         //////////////////////afficher les listes
         function displayIndex($params)
         {
-
-            $db = new PDO(
-                "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8",
-                DB_USER,
-                DB_PASS
-            );
-
-            $sql = "SELECT * FROM items";
-            $stmt = $db->prepare ($sql);
-            $stmt->execute ();
-
+            $db = new ManipBDD();
+            $sql = "SELECT * FROM TACHES";
+            $stmt = $db->connection->query($sql);
             echo "<h2>Liste des choses à faire</h2>";
             echo "<ul>";
-            while ($item = $stmt->fetch ()) {
-                echo "<li><a href='index.php?action=display & slug=" . $item["slug"] . "'>" . $item["description"] . "</a></li>";
+            while ($item = $stmt->fetch_row()) {
+                //echo "<li><a href='index.php?action=display & slug=" . $item["slug"] . "'>" . $item["description"] . "</a></li>";
+                echo $item[0];
             }
             echo "</ul>";
 

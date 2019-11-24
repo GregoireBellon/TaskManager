@@ -62,9 +62,14 @@ class ManipBDD
     public function getListes($username){
         //Permet de récupérer les listes d'un utilisateur
         $requete = "SELECT * FROM Liste as A NATURAL JOIN Privileges as B NATURAL 
-                    JOIN Utilisateur as C WHERE C.nom_user=".$username."AND A.id_liste=B.id_liste AND B.id_user=C.id_user";
+                    JOIN Utilisateur as C WHERE C.nom_user='$username' AND A.id_liste=B.id_liste AND B.id_user=C.id_user";
         $resultat = $this->connection->query($requete);
-        return $resultat;
+        while($row = $resultat->fetch_row())
+        {
+            echo "<li>";
+            echo ($row[2].'('.$row[4]);
+            echo "</li>";
+        }
     }
 
     // Fonction d'ajout de liste dans la table 'Liste'
