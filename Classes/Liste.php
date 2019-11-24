@@ -5,13 +5,12 @@ require ('ManipBDD.php');
 
 class Liste
 {
-    private $id, $nom, $dateCreation;
+    private $nom, $dateCreation;
     private $db;
     private $taches;
 
-    public function __construct($id, $nom, $dateCreation)
+    public function __construct($nom, $dateCreation)
     {
-        $this->id = $id;
         $this->nom = $nom;
         $this->dateCreation = $dateCreation;
 
@@ -19,13 +18,12 @@ class Liste
 
         $this->taches=array();
 
-
+        $this->sauvListe();
         //echo "Nom liste : ".$this->nom." | Date de création : ".$this->date;
     }
 
-    public function creerListe($id, $nom, $dateCreation){
+    public function creerListe($nom, $dateCreation){
 
-        $this->id = $id;
         $this->nom = $nom;
         $this->dateCreation = $dateCreation;
 
@@ -36,7 +34,7 @@ class Liste
     }
 
     public function sauvListe(){
-        $this->db->ajouterListe($this->id, $this->nom, $this->dateCreation);
+        $this->db->ajouterListe($this->nom, $this->dateCreation);
     }
 
 
