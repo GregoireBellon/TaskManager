@@ -1,7 +1,7 @@
 <?php
 
-require ('Tache.php');
-require ('ManipBDD.php');
+require_once ('Tache.php');
+//require_once ('ManipBDD.php');
 
 class Liste
 {
@@ -15,38 +15,84 @@ class Liste
      * @param $nom nom de la liste à créer
      * @param $taches taches dans la liste à insérer
      */
-    public function __construct($id, $nom, $taches)
+    public function __construct($id = FALSE, $nom = FALSE, $dateCreation = FALSE, $taches= FALSE)
     {
 
-        switch (func_num_args()){
-            case 2:
+        $this->db = new ManipBDD();
 
-               $this->id= $this->creerListe($nom,$taches); //récupérer $nom et $taches
+        if((func_num_args()===1) AND $id == TRUE){
 
-                break;
-            case 1:
-                $this->recupListe($id);
-                $this->id = $id;
-
+            $this->recupListe($id);
+        }
+        else{
+           $this->creerListe($id,$nom, $dateCreation, $taches);
         }
 
-        $this->db = new ManipBDD();
 
 
         //echo "Nom liste : ".$this->nom." | Date de création : ".$this->date;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateCreation()
+    {
+        return $this->dateCreation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTaches()
+    {
+        return $this->taches;
+    }
+
     private function recupListe($id){
 
-        chang
+        $this->id;
+        $list_recup = $this->db->getListe($id);
+        $this->nom = $list_recup->nom;
+        $this->dateCreation = $list_recup->dateCreation;
+
 
     }
 
-    public function creerListe($nom, $taches){
+    public function creerListe($id,$nom, $dateCreation, $taches){
 
         $this->nom = $nom;
-        $this->dateCreation = date("Y-m-d H:i");
         $this->taches = $taches;
+
+
+        if($dateCreation==FALSE){
+
+            $this->dateCreation = date("Y-m-d H:i");
+
+        }
+        if($id==FALSE){
+           $id = $this->sauvListe();
+        }
+
+        $this->id=$id;
+
+
 
     }
 
@@ -55,11 +101,15 @@ class Liste
     }
 
     public function sauvListe(){
-        $this->db->ajouterListe($this->id, $this->nom, $this->dateCreation);
-        foreach ($this->taches as $tache){
-            $t = new Tache($tache);
-        }
+
+        $this->id = $this->db->sauvegarderListe($this->id, $this->nom, $this->dateCreation);
+        #foreach ($this->taches as $tache){
+         #   $t = new Tache($tache);
+        #}
+
     }
+
+
 
     public function afficherListe(){
         echo $this->nom;

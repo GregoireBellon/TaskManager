@@ -49,9 +49,28 @@ class ManipBDD
         return true;
     }
 
-    public function  getListe($idListe){
-        $requete = "SELECT * FROM Liste WHERE id_list='$idListe'";
-        return $this->querry($requete);
+    public function listesUtilisateur($nomUtilisateur){
+        $requete="SELECT id_liste FROM Liste as A NATURAL JOIN Privileges as B NATURAL JOIN Utilisateur as C WHERE C.nom_user= '$nomUtilisateur';";
+        $result =  $this->connection->query($requete);
+        return $result;
+
+    }
+
+    public function  getListe($id){
+
+
+        $requete = "SELECT * FROM Liste WHERE id_liste='$id'";
+        $result =  $this->connection->query($requete);
+
+       $result = $result->fetch_row();
+
+
+
+        $list =  new Liste($result[0], $result[1], $result[2]);
+
+       return $list;
+
+
     }
 
 
@@ -78,18 +97,19 @@ class ManipBDD
     // Fonction d'ajout et de sauvegarde de liste dans la table 'Liste.
     // Donner la valeur -1 à idListe si on veut créer une nouvelle dans la BDD
 
-    public function sauvegarderListe($idListe, $nomListe, $date, $taches)
+    public function sauvegarderListe($idListe, $nomListe, $date)
     {
 
-        if($idListe!=-1){
-
+        if($idListe!=FALSE){
+            $id = $idListe;
             $requete = "UPDATE Liste SET nom_liste = '$nomListe', date_creation ='$date' WHERE id_liste = '$idListe'";
 
         }else{
-            $requete = "INSERT INTO Liste (nom_liste, date_creation) VALUES('$nomListe','$date');";
-            $this->connection->query($requete);
-
+            $requete = "INSERT INTO Liste (nom_liste, date_creation) VALUES('$nomListe','$date'); SELECT  LAST_INSERT_ID();";
+           $id = strval($this->connection->query($requete));
         }
+
+        return $id;
 
     }
 

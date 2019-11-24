@@ -1,7 +1,8 @@
 <?php
     // Page principale du site (page sur laquelle l'utilisateur arrive près s'être connecté)
     session_start();
-    require('../Classes/ManipBDD.php');
+    //require_once('../Classes/ManipBDD.php');
+    require_once('../Classes/Liste.php');
 
 ?>
 <!DOCTYPE html>
@@ -19,17 +20,30 @@
         <ol>
             <?php
             $db= new ManipBDD();
-            $result=$db->getListes($_SESSION["username"]);
-            while($row = mysqli_fetch_array($result))
+            $result=$db->listesUtilisateur($_SESSION["username"]);
+
+            var_dump($result);
+
+            while ($row = $result->fetch_row())
             {
+                var_dump($row);
+                $l = new Liste($row[0]);
                 echo "<li>";
-                echo ($row["nom_liste"].'('.$row["droit"]);
+                $l->afficherListe();
                 echo "</li>";
             }
             ?>
         </ol>
+
         <form action="../Scripts/accesTaches.php" method="post" id="boutonDeconnnexion">
             <p><input type="submit" value="AccesTaches" class="bouton"/></p>
         </form>
+
+    <form action="Scripts/addList.php">
+
+        <input type="submit" value="AjouterListe" class="bouton"/> <br>
+
+    </form>
+
     </body>
 </html>
