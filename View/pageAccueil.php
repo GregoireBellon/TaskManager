@@ -1,4 +1,9 @@
 <!-- PAGE AFFICHANT LES LISTES / APRES S'ETRE CONNECTÉ -->
+<?php
+include('../Classes/ManipBDD.php');
+session_start();
+?>
+
 <!DOCTYPE html>
 <link href="style.css" rel="stylesheet" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -30,9 +35,6 @@
 
         <?php
         // Page principale du site (page sur laquelle l'utilisateur arrive près s'être connecté)
-        session_start();
-        require('../Classes/ManipBDD.php');
-
         function afficherListes($params)
         {
             $db = new ManipBDD();
