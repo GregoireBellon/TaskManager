@@ -3,6 +3,7 @@
     session_start();
     //require_once('../Classes/ManipBDD.php');
     require_once('../Classes/Liste.php');
+    require_once ('../Classes/Tache.php');
 
 ?>
 <!DOCTYPE html>
@@ -19,22 +20,23 @@
         <h1>Bienvenue, <?php echo $_SESSION["username"]?> !</h1>
         <ul>
             <?php
+
             $db= new ManipBDD();
             $result=$db->listesUtilisateur($_SESSION["username"]);
 
+
+
             while ($row = $result->fetch_row())
             {
+
                 $l = new Liste($row[0]);
-                echo "<li>";
+
+                $listes[$l->getId()] = $l;
                 $l->afficherListe();
-                echo "</li>";
             }
+            $_SESSION['listes'] = $listes;
             ?>
         </ul>
-
-        <form action="../Scripts/accesTaches.php" method="post" id="boutonDeconnnexion">
-            <p><input type="submit" value="AccesTaches" class="bouton"/></p>
-        </form>
 
     <form action="Scripts/addList.php">
 

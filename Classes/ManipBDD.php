@@ -62,9 +62,7 @@ class ManipBDD
         $requete = "SELECT * FROM Liste WHERE id_liste='$id'";
         $result =  $this->connection->query($requete);
 
-       $result = $result->fetch_row();
-
-
+        $result = $result->fetch_row();
 
         $list =  new Liste($result[0], $result[1], $result[2]);
 
@@ -99,7 +97,6 @@ class ManipBDD
 
     public function sauvegarderListe($idListe, $nomListe, $date)
     {
-
         if($idListe!=FALSE){
             $id = $idListe;
             $requete = "UPDATE Liste SET nom_liste = '$nomListe', date_creation ='$date' WHERE id_liste = '$idListe'";
@@ -123,16 +120,18 @@ class ManipBDD
     }*/
 
     // Fonction d'ajout de liste dans la table 'Liste'
-    public function sauvegarderTache($idTache, $nom, $idListe, $description, $dateDeb, $dateFin, $statut)
+    public function sauvegarderTache($idTache, $nom, $description, $dateDeb, $dateFin, $statut, $idListe)
     {
-        if ($idTache == -1) {
+        if ($idTache == False) {
 
             $requete = "INSERT INTO Tache (nom_tache, id_liste, des_tache, date_debut, date_fin, statut) VALUES('$nom','$idListe','$description','$dateDeb','$dateFin','$statut');";
             $this->connection->query($requete);
+            echo $this->connection->error;
+            return $this->connection->insert_id;
 
 
         } else {
-            $requete = "UPDATE Tache SET nom_tache = '$nom', id_liste = '$idListe', des_tache = '$description', date_debut = '$dateDeb', date_fin = '$dateFin', statut date_creation = '$statut' WHERE id_tache = '$idTache';";
+            $requete = "UPDATE Tache SET nom_tache = '$nom', des_tache = '$description', date_debut = '$dateDeb', date_fin = '$dateFin', statut date_creation = '$statut' WHERE id_tache = '$idTache';";
 
             $this->connection->query($requete);
         }
@@ -140,11 +139,12 @@ class ManipBDD
     }
 
 
-    public function getTaches($id)
+    public function getTaches($id_list)
     {
         //Permet de récupérer les listes d'un utilisateur
-        $requete = "SELECT * FROM Tache as A NATURAL JOIN Privileges as B NATURAL JOIN Utilisateur as C WHERE C.id_user=".id."AND A.id_tache=B.id_tache AND B.id_user=C.id_user";
+        $requete = "SELECT * FROM `Tache` WHERE id_liste = $id_list";
         $resultat = $this->connection->query($requete);
+        echo $this->connection->error;
         return $resultat;
     }
 
