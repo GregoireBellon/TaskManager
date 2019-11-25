@@ -1,8 +1,8 @@
 <?php
 // Page principale du site (page sur laquelle l'utilisateur arrive près s'être connecté)
 session_start();
-require_once('../Classes/ManipBDD.php');
-require_once('../Classes/Liste.php');
+include('../Classes/ManipBDD.php');
+include('../Classes/Liste.php');
 
 ?>
 <!DOCTYPE html>

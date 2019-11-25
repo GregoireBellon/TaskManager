@@ -2,7 +2,7 @@
     // Ce script permet de vérifier que les informations de connexion sont bonnes
     // et redirige l'utilisateur en conséquence.
 
-    include_once("../Classes/ManipBDD.php");
+include("../Classes/ManipBDD.php");
     session_start();
     $db = new ManipBDD();
     $username = $_SESSION["username"];

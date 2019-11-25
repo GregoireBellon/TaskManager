@@ -2,7 +2,7 @@
     // Cette classe permet de vérifier que le formulaire de création de compte a été rempli correctement.
     // Il ajoute également cet utilisateur à la base de données.
     session_start();
-    require("../Classes/ManipBDD.php");
+include("../Classes/ManipBDD.php");
     $bdd = new ManipBDD();
     $username = $_POST["username"];
     $password = $_POST["password"];

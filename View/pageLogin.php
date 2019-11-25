@@ -1,6 +1,8 @@
 <?php
     // Page de connexion à un compte déjà existant
     session_start();
+    include("../Classes/ManipBDD.php");
+    $_SESSION["error_login"] = "";
 ?>
 
 <!DOCTYPE html>
@@ -15,8 +17,6 @@
 <!-- Logo de Connexion -->
 <div id="brand"> <h1 id="title">TaskyManagery</h1> </div>
 <img src="../Ressources/user.png" id="connection_img">
-
-
 <!-- Formulaire de connexion -->
 <form id="formConnection" method="post" action="../Scripts/redirectPageLogin.php">
 
@@ -37,6 +37,3 @@
 </form>
 </body>
 </html>
-<?php
-$_SESSION["error_login"] = "";
-?>

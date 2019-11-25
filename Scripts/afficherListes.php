@@ -1,6 +1,6 @@
 <?php
 //Ce fichier sert à afficher les listes d'un utilisateur
-require('../Classes/ManipBDD.php');
+include('../Classes/ManipBDD.php');
 session_start();
 
 $db= new ManipBDD();
