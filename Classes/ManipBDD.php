@@ -63,9 +63,7 @@ class ManipBDD
         $requete = "SELECT * FROM Liste WHERE id_liste='$id'";
         $result =  $this->connection->query($requete);
 
-       $result = $result->fetch_row();
-
-
+        $result = $result->fetch_row();
 
         $list =  new Liste($result[0], $result[1], $result[2]);
 
@@ -100,8 +98,12 @@ class ManipBDD
 
     public function sauvegarderListe($idListe, $nomListe, $date)
     {
+<<<<<<< HEAD
 
         /*if($idListe!=FALSE){
+=======
+        if($idListe!=FALSE){
+>>>>>>> 52c5bde38901d507fa0d80a465d67205de58f968
             $id = $idListe;
             $requete = "UPDATE Liste SET nom_liste = '$nomListe', date_creation ='$date' WHERE id_liste = '$idListe'";
 
@@ -125,16 +127,18 @@ class ManipBDD
     }*/
 
     // Fonction d'ajout de liste dans la table 'Liste'
-    public function sauvegarderTache($idTache, $nom, $idListe, $description, $dateDeb, $dateFin, $statut)
+    public function sauvegarderTache($idTache, $nom, $description, $dateDeb, $dateFin, $statut, $idListe)
     {
-        if ($idTache == -1) {
+        if ($idTache == False) {
 
             $requete = "INSERT INTO Tache (nom_tache, id_liste, des_tache, date_debut, date_fin, statut) VALUES('$nom','$idListe','$description','$dateDeb','$dateFin','$statut');";
             $this->connection->query($requete);
+            echo $this->connection->error;
+            return $this->connection->insert_id;
 
 
         } else {
-            $requete = "UPDATE Tache SET nom_tache = '$nom', id_liste = '$idListe', des_tache = '$description', date_debut = '$dateDeb', date_fin = '$dateFin', statut date_creation = '$statut' WHERE id_tache = '$idTache';";
+            $requete = "UPDATE Tache SET nom_tache = '$nom', des_tache = '$description', date_debut = '$dateDeb', date_fin = '$dateFin', statut date_creation = '$statut' WHERE id_tache = '$idTache';";
 
             $this->connection->query($requete);
         }
@@ -142,11 +146,16 @@ class ManipBDD
     }
 
 
-    public function getTaches($id)
+    public function getTaches($id_list)
     {
         //Permet de récupérer les listes d'un utilisateur
+<<<<<<< HEAD
         $requete = "SELECT * FROM Tache as Tasks NATURAL JOIN Privileges as Droits NATURAL JOIN Utilisateur as Users WHERE Users.id_user='$id' AND Droits.id_user=Users.id_user";
+=======
+        $requete = "SELECT * FROM `Tache` WHERE id_liste = $id_list";
+>>>>>>> 52c5bde38901d507fa0d80a465d67205de58f968
         $resultat = $this->connection->query($requete);
+        echo $this->connection->error;
         return $resultat;
     }
 

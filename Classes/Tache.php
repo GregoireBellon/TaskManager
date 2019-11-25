@@ -8,19 +8,46 @@ class Tache
     private $id, $nom, $idListe, $description, $dateDeb, $dateFin, $statut;
     private $db;
 
-    public function  __construct($id, $nom, $idListe, $description, $dateDeb, $dateFin, $statut)
+    public function  __construct($id = False, $nom, $description, $dateDeb, $dateFin, $statut, $idListe)
     {
-        $this->id = $id;
+
+        $this->db = new ManipBDD();
+
+       $this->idListe = $idListe;
         $this->nom = $nom;
-        $this->idListe = $idListe;
         $this->description = $description;
         $this->dateDeb = $dateDeb;
         $this->dateFin = $dateFin;
         $this->statut = $statut;
 
-        $this->db = new ManipBDD();
-        $this->db.ajouterTache($this->id, $this->nom, $this->idListe, $this->description, $this->dateDeb, $this->dateFin, $this->statut);
+        if($id == False){
+            $this->ajouterTache();
+        }else{
+            $this->id = $id;
+        }
+
         //echo "Nom tache : ".$this->nom." | Description : ".$this->description." | Date : ".$this->date;
+    }
+
+    private function ajouterTache(){
+        $this->id = $this->db->sauvegarderTache(False,$this->nom, $this->description, $this->dateDeb , $this->dateFin, $this->statut, $this->idListe);
+    }
+
+    public function sauvegarderTache(){
+      $this->db->sauvegarderTache($this->id,$this->nom, $this->description, $this->dateDeb , $this->dateFin, $this->statut, $this->idListe);
+    }
+
+    public function afficherTache(){
+        echo "<div class='tache'>
+   
+   <div class='nom_tache'>".$this->nom."</div> <br>
+   <div class='description_tache'>DESCRIPTION : ".$this->description."</div><br>
+   <div class='date_debut_tache'>DATE DEBUT :".$this->dateDeb."</div><br>
+   <div class='date_fin_tache'>DATE FIN :".$this->dateFin."</div><br>
+   <div class='status_tache'>STATUS :".$this->statut."</div><br>
+
+
+        </div>";
     }
 
     public function rename($nom)
