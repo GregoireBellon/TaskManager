@@ -67,7 +67,7 @@ class ManipBDD
         while($row = $resultat->fetch_row())
         {
             echo "<li>";
-            echo ($row[2].'('.$row[4]);
+            echo ($row[2].'('.$row[4].')');
             echo "</li>";
         }
     }

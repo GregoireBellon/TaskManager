@@ -16,6 +16,8 @@ if (isset($_POST['connecButton'])) {
 elseif (isset($_POST['signButton'])) {
     $_SESSION['username'] = $_POST['username'];
     $_SESSION['password'] = $_POST['password'];
+    $_SESSION['username_error'] = "";
+    $_SESSION['password_not_same'] = "";
     header('Location: ../View/pageSignin.php');
 }
 ?>
