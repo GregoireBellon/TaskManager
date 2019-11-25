@@ -9,8 +9,8 @@ class ManipBDD
     {
         // Le constructeur connecte automatiquement l'objet créé à la BDD
         $dbhost = "localhost";
-        $dbuser = "simpleb0t";
-        $dbpass = "S1Mpl€bOOt";
+        $dbuser = "webadmin";
+        $dbpass = "WynoVe1940+J";
         $db = "TD_GROUPE_PHP";
         $this->connection = new mysqli($dbhost, $dbuser, $dbpass, $db);
         if ($this->connection->errno) {
@@ -98,33 +98,30 @@ class ManipBDD
 
     public function sauvegarderListe($idListe, $nomListe, $date)
     {
-<<<<<<< HEAD
+        if ($idListe != FALSE) {
+            if ($idListe != FALSE) {
+                $id = $idListe;
+                $requete = "UPDATE Liste SET nom_liste = '$nomListe', date_creation ='$date' WHERE id_liste = '$idListe'";
 
-        /*if($idListe!=FALSE){
-=======
-        if($idListe!=FALSE){
->>>>>>> 52c5bde38901d507fa0d80a465d67205de58f968
-            $id = $idListe;
-            $requete = "UPDATE Liste SET nom_liste = '$nomListe', date_creation ='$date' WHERE id_liste = '$idListe'";
-
-        }else{*/
-            $requete = "INSERT INTO Liste (nom_liste, date_creation) VALUES('$nomListe','$date'); SELECT  LAST_INSERT_ID();";
-            $id = strval($this->connection->query($requete));
-            $idUser = $this->getIdUser($_SESSION['username']);
-            $requete = "INSERT INTO Privileges VALUES('$id','$idUser',ecriture);";
-            $this->connection->query($requete);
-//        }
-//        return $id;
+            } else {
+                $requete = "INSERT INTO Liste (nom_liste, date_creation) VALUES('$nomListe','$date'); SELECT  LAST_INSERT_ID();";
+                $id = strval($this->connection->query($requete));
+                $idUser = $this->getIdUser($_SESSION['username']);
+                $requete = "INSERT INTO Privileges VALUES('$id','$idUser',ecriture);";
+                $this->connection->query($requete);
+            }
+            return $id;
+        }
     }
 
 
-   /* public function getListes($username)
+    public function getListes($username)
     {
         //Permet de récupérer les listes d'un utilisateur
         $requete = "SELECT * FROM Liste as A NATURAL JOIN Privileges as B NATURAL JOIN Utilisateur as C WHERE C.nom_user=".$username."AND A.id_liste=B.id_liste AND B.id_user=C.id_user";
         $resultat = $this->connection->query($requete);
         return $resultat;
-    }*/
+    }
 
     // Fonction d'ajout de liste dans la table 'Liste'
     public function sauvegarderTache($idTache, $nom, $description, $dateDeb, $dateFin, $statut, $idListe)
@@ -142,24 +139,18 @@ class ManipBDD
 
             $this->connection->query($requete);
         }
-
+        echo $this->error;
     }
-
 
     public function getTaches($id_list)
     {
         //Permet de récupérer les listes d'un utilisateur
-<<<<<<< HEAD
+        $id = $this->getIdUser($_SESSION["username"]);
         $requete = "SELECT * FROM Tache as Tasks NATURAL JOIN Privileges as Droits NATURAL JOIN Utilisateur as Users WHERE Users.id_user='$id' AND Droits.id_user=Users.id_user";
-=======
-        $requete = "SELECT * FROM `Tache` WHERE id_liste = $id_list";
->>>>>>> 52c5bde38901d507fa0d80a465d67205de58f968
+        $requete = "SELECT * FROM Tache WHERE id_liste = '$id_list'";
         $resultat = $this->connection->query($requete);
         echo $this->connection->error;
         return $resultat;
     }
 
-    public function ajouterListe(){
-
-    }
 }

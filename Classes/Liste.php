@@ -1,6 +1,6 @@
 <?php
 
-//require_once ('ManipBDD.php');
+//include('ManipBDD.php');
 
 class Liste
 {
@@ -16,19 +16,12 @@ class Liste
      */
     public function __construct($id = FALSE, $nom = FALSE, $dateCreation = FALSE, $taches = FALSE)
     {
-
         $this->db = new ManipBDD();
-
-
         if((func_num_args()===1) AND $id == TRUE){
-
-
             $this->recupListe($id);
-
-
         }
         else{
-           $this->creerListe($id,$nom, $dateCreation, $taches);
+            $this->creerListe($id,$nom, $dateCreation, $taches);
         }
 
 
@@ -96,7 +89,7 @@ class Liste
 
         $this->db->sauvegarderListe($this->id, $this->nom, $this->dateCreation);
         #foreach ($this->taches as $tache){
-         #   $t = new Tache($tache);
+        #   $t = new Tache($tache);
         #}
 
     }
@@ -105,38 +98,25 @@ class Liste
 
         $taches = $this->db->getTaches($this->id);
         while ($row = $taches->fetch_row()){
-<<<<<<< HEAD
-=======
-           $t = new Tache($row[0], $row[1], $row[3], $row[4], $row[5], $row[6], $this->id);
+            $t = new Tache($row[0], $row[1], $row[3], $row[4], $row[5], $row[6], $this->id);
             $this->taches[]=$t;
         }
-
-
->>>>>>> 52c5bde38901d507fa0d80a465d67205de58f968
-
-        }
     }
+
 
     public function afficherListe(){
 
         echo "<form action=\"../View/pageTaches.php\" method='get'>";
         echo "<input type=\"hidden\" name=\"id\" value=\"$this->id\">";
-<<<<<<< HEAD
         echo "<input type=\"hidden\" name=\"nom\" value=\"$this->nom\">";
         echo "<input type=\"hidden\" name=\"date\" value=\"$this->dateCreation\">";
         echo "<input type=\"hidden\" name=\"taches\" value=\"$this->taches\">";
-=======
->>>>>>> 52c5bde38901d507fa0d80a465d67205de58f968
         echo "<input type='submit' value='$this->nom'>";
         echo "</form>";
     }
 
-<<<<<<< HEAD
-=======
     public function ajouterTache($tache){
         $this->taches[]=$tache;
     }
 
-
->>>>>>> 52c5bde38901d507fa0d80a465d67205de58f968
 }

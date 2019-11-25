@@ -1,6 +1,8 @@
 <?php
     // Page de création d'un compte
     session_start();
+    $_SESSION['password_not_same']="";  // Message d'erreur caché dans un premier temps (modifié si besoin dans verifSignin)
+    $_SESSION['username_error']="";     // Message d'erreur caché dans un premier temps (modifié si besoin dans verifSignin)
 ?>
 <!DOCTYPE html>
 <link href="style.css" rel="stylesheet" xmlns="http://www.w3.org/1999/html">
@@ -23,8 +25,3 @@
 </div>
 </body>
 </html>
-
-<?php
-$_SESSION['password_not_same']="";
-$_SESSION['username_error']="";
- ?>

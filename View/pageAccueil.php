@@ -2,8 +2,8 @@
     // Page principale du site (page sur laquelle l'utilisateur arrive près s'être connecté)
     session_start();
     //require_once('../Classes/ManipBDD.php');
-    require_once('../Classes/Liste.php');
-    require_once ('../Classes/Tache.php');
+    require('../Classes/Liste.php');
+    require('../Classes/Tache.php');
 
 ?>
 <!DOCTYPE html>
@@ -38,17 +38,14 @@
             ?>
         </ul>
 
-<<<<<<< HEAD
         <form action="../Scripts/accesTaches.php" method="post" id="boutonDeconnnexion">
             <p><input type="submit" value="AccesTaches" class="bouton"/></p>
         </form>
 
-    <form action="../Scripts/ajouterListe.php" method="post">
-=======
-    <form action="Scripts/addList.php">
->>>>>>> 52c5bde38901d507fa0d80a465d67205de58f968
+    <form action="../Scripts/acces_ajout.php" method="post">
 
-        <input type="submit" value="Ajouter Liste" name = "nom_liste" class="bouton"/> <br>
+    <form action="../Scripts/acces_ajout.php">
+                <input type="submit" value="Ajouter une Liste" class="bouton"/> <br>
 
     </form>
 
