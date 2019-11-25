@@ -17,23 +17,20 @@
             <p><input type="submit" value="Déconnexion" class="bouton"/></p>
         </form>
         <h1>Bienvenue, <?php echo $_SESSION["username"]?> !</h1>
-        <ol>
+        <ul>
             <?php
             $db= new ManipBDD();
             $result=$db->listesUtilisateur($_SESSION["username"]);
 
-            var_dump($result);
-
             while ($row = $result->fetch_row())
             {
-                var_dump($row);
                 $l = new Liste($row[0]);
                 echo "<li>";
                 $l->afficherListe();
                 echo "</li>";
             }
             ?>
-        </ol>
+        </ul>
 
         <form action="../Scripts/accesTaches.php" method="post" id="boutonDeconnnexion">
             <p><input type="submit" value="AccesTaches" class="bouton"/></p>

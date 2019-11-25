@@ -140,10 +140,10 @@ class ManipBDD
     }
 
 
-    public function getTaches($username)
+    public function getTaches($id)
     {
         //Permet de récupérer les listes d'un utilisateur
-        $requete = "SELECT * FROM Tache as A NATURAL JOIN Privileges as B NATURAL JOIN Utilisateur as C WHERE C.nom_user=".$username."AND A.id_liste=B.id_liste AND B.id_user=C.id_user";
+        $requete = "SELECT * FROM Tache as A NATURAL JOIN Privileges as B NATURAL JOIN Utilisateur as C WHERE C.id_user=".id."AND A.id_tache=B.id_tache AND B.id_user=C.id_user";
         $resultat = $this->connection->query($requete);
         return $resultat;
     }

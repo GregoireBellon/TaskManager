@@ -28,7 +28,7 @@
         <div id="password_input" >
             <input name="password" class="input" type="password"  placeholder="Mot de Passe"/>
         </div>
-        <p class="error"> <?php echo $_SESSION["error_login"]?></p>
+        <p class="error"> <?php if(!empty($_SESSION["error_login"])){ echo $_SESSION["error_login"];}?></p>
         <div id="submit_buttons">
             <input name="connecButton" value="Connexion"  class="green_button" type="submit"> <br>
             <input name="signButton" value="S'inscrire"  class="blue_button" type="submit"> <br>

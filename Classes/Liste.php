@@ -67,10 +67,11 @@ class Liste
 
     private function recupListe($id){
 
-        $this->id;
+        $this->id = $id;
         $list_recup = $this->db->getListe($id);
         $this->nom = $list_recup->nom;
         $this->dateCreation = $list_recup->dateCreation;
+        $this->recupTaches();
 
 
     }
@@ -109,10 +110,33 @@ class Liste
 
     }
 
+    private function recupTaches(){
+
+        $taches = $this->db->getTaches($this->id);
+
+
+        while ($row = $taches->fetch_row()){
+            var_dump($row);
+        }
+
+
+
+    }
 
 
     public function afficherListe(){
-        echo $this->nom;
+
+        echo "<form action=\"../View/pageTaches.php\" method='get'>";
+
+        echo "<input type=\"hidden\" name=\"id\" value=\"$this->id\">";
+        echo "<input type=\"hidden\" name=\"nom\" value=\"$this->nom\">";
+        echo "<input type=\"hidden\" name=\"date\" value=\"$this->dateCreation\">";
+        echo "<input type=\"hidden\" name=\"taches\" value=\"$this->taches\">";
+
+
+        echo "<input type='submit' value='$this->nom'>";
+
+        echo "</form>";
     }
 
 
