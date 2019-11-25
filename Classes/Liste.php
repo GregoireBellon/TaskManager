@@ -87,14 +87,6 @@ class Liste
             $this->dateCreation = date("Y-m-d H:i");
 
         }
-        if($id==FALSE){
-           $id = $this->sauvListe();
-        }
-
-        $this->id=$id;
-
-
-
     }
 
     public function ajouterTache($tache){
@@ -103,7 +95,7 @@ class Liste
 
     public function sauvListe(){
 
-        $this->id = $this->db->sauvegarderListe($this->id, $this->nom, $this->dateCreation);
+        $this->db->sauvegarderListe($this->id, $this->nom, $this->dateCreation);
         #foreach ($this->taches as $tache){
          #   $t = new Tache($tache);
         #}
@@ -113,32 +105,20 @@ class Liste
     private function recupTaches(){
 
         $taches = $this->db->getTaches($this->id);
-
-
         while ($row = $taches->fetch_row()){
-            var_dump($row);
+
         }
-
-
-
     }
-
 
     public function afficherListe(){
 
         echo "<form action=\"../View/pageTaches.php\" method='get'>";
-
         echo "<input type=\"hidden\" name=\"id\" value=\"$this->id\">";
         echo "<input type=\"hidden\" name=\"nom\" value=\"$this->nom\">";
         echo "<input type=\"hidden\" name=\"date\" value=\"$this->dateCreation\">";
         echo "<input type=\"hidden\" name=\"taches\" value=\"$this->taches\">";
-
-
         echo "<input type='submit' value='$this->nom'>";
-
         echo "</form>";
     }
-
-
 
 }

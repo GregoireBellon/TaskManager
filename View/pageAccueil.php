@@ -36,9 +36,9 @@
             <p><input type="submit" value="AccesTaches" class="bouton"/></p>
         </form>
 
-    <form action="Scripts/addList.php">
+    <form action="../Scripts/ajouterListe.php" method="post">
 
-        <input type="submit" value="AjouterListe" class="bouton"/> <br>
+        <input type="submit" value="Ajouter Liste" name = "nom_liste" class="bouton"/> <br>
 
     </form>
 

@@ -1,5 +1,6 @@
 <?php
 // Classe qui permet d'intéragir avec la base de données
+
 class ManipBDD
 {
     public $connection;
@@ -100,17 +101,18 @@ class ManipBDD
     public function sauvegarderListe($idListe, $nomListe, $date)
     {
 
-        if($idListe!=FALSE){
+        /*if($idListe!=FALSE){
             $id = $idListe;
             $requete = "UPDATE Liste SET nom_liste = '$nomListe', date_creation ='$date' WHERE id_liste = '$idListe'";
 
-        }else{
+        }else{*/
             $requete = "INSERT INTO Liste (nom_liste, date_creation) VALUES('$nomListe','$date'); SELECT  LAST_INSERT_ID();";
-           $id = strval($this->connection->query($requete));
-        }
-
-        return $id;
-
+            $id = strval($this->connection->query($requete));
+            $idUser = $this->getIdUser($_SESSION['username']);
+            $requete = "INSERT INTO Privileges VALUES('$id','$idUser',ecriture);";
+            $this->connection->query($requete);
+//        }
+//        return $id;
     }
 
 
@@ -143,12 +145,12 @@ class ManipBDD
     public function getTaches($id)
     {
         //Permet de récupérer les listes d'un utilisateur
-        $requete = "SELECT * FROM Tache as A NATURAL JOIN Privileges as B NATURAL JOIN Utilisateur as C WHERE C.id_user=".id."AND A.id_tache=B.id_tache AND B.id_user=C.id_user";
+        $requete = "SELECT * FROM Tache as Tasks NATURAL JOIN Privileges as Droits NATURAL JOIN Utilisateur as Users WHERE Users.id_user='$id' AND Droits.id_user=Users.id_user";
         $resultat = $this->connection->query($requete);
         return $resultat;
     }
 
+    public function ajouterListe(){
 
-
-
+    }
 }
