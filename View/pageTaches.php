@@ -18,6 +18,7 @@ if($_GET['id']!=null) {
 
 
 $taches = $liste->getTaches();
+
 ?>
 
 <!DOCTYPE html>
@@ -31,15 +32,15 @@ $taches = $liste->getTaches();
 <form action="../Scripts/retourHome.php" method="post" id="boutonRetour">
     <p><input type="submit" value="Retour" class="bouton"/></p>
 </form>
-<h1>Voici vos Taskys, <?php echo $_SESSION["username"]?> !</h1>
+<h1>Voici vos taches, <?php echo $_SESSION["username"]?> !</h1>
 
 
     <?php
+    foreach ($taches as $t) {
 
-foreach ($taches as $t) {
+        echo $t->afficherTache();
+    }
 
-    echo $t->afficherTache();
-}
 
  ?>
 <form action="./pageAjoutTache.php" method="get">

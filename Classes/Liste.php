@@ -14,10 +14,9 @@ class Liste
      * @param $nom nom de la liste à créer
      * @param $taches taches dans la liste à insérer
      */
-    public function __construct($id = FALSE, $nom = FALSE, $dateCreation = FALSE, $taches = FALSE)
-    {
+    public function __construct($id = FALSE, $nom = FALSE, $dateCreation = FALSE, $taches = FALSE){
         $this->db = new ManipBDD();
-        if((func_num_args()===1) AND $id == TRUE){
+        if((func_num_args()===1) AND $id == TRUE){  //Si on entre uniquement l'ID
             $this->recupListe($id);
         }
         elseif(func_num_args()===3){
@@ -121,7 +120,6 @@ class Liste
         echo "<input type=\"hidden\" name=\"id\" value=\"$this->id\">";
         echo "<input type=\"hidden\" name=\"nom\" value=\"$this->nom\">";
         echo "<input type=\"hidden\" name=\"date\" value=\"$this->dateCreation\">";
-        //echo "<input type=\"hidden\" name=\"taches\" value=\"$this->taches\">";
         echo "<input type='submit' value='$this->nom'>";
         echo "</form>";
 
