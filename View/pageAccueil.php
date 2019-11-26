@@ -22,6 +22,9 @@
             <?php
             $listes = null;
             $db= new ManipBDD();
+            $_SESSION['id']= $db->getIdUser($_SESSION["username"]);
+
+
             $result=$db->listesUtilisateur($_SESSION["username"]);
 
             while ($row = $result->fetch_row())

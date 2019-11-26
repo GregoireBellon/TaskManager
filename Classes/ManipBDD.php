@@ -59,12 +59,9 @@ class ManipBDD
 
     public function  getListe($id){
 
-
         $requete = "SELECT * FROM Liste WHERE id_liste='$id'";
         $result =  $this->connection->query($requete);
-
         $result = $result->fetch_row();
-
         $list =  new Liste($result[0], $result[1], $result[2]);
 
        return $list;
@@ -98,16 +95,40 @@ class ManipBDD
 
     public function sauvegarderListe($idListe, $nomListe, $date)
     {
+
+
+        error_log("ID Liste : ".$idListe." Nom liste : ".$nomListe." Date : ".$date);
+
+        error_log("Sauvegarde liste");
             if ($idListe != FALSE) {
+
+                error_log("Id Liste != False");
                 $id = $idListe;
                 $requete = "UPDATE Liste SET nom_liste = '$nomListe', date_creation ='$date' WHERE id_liste = '$idListe'";
                 $this->connection->query($requete);
-            } else {
-                $requete = "INSERT INTO Liste (nom_liste, date_creation) VALUES('$nomListe','$date'); SELECT  LAST_INSERT_ID();";
-                $id = strval($this->connection->query($requete));
-                $idUser = $this->getIdUser($_SESSION['username']);
-                $requete = "INSERT INTO Privileges VALUES('$id','$idUser',ecriture);";
                 $this->connection->query($requete);
+
+            } else {
+                error_log("Sauvegarde ID liste false");
+
+
+                $requete = "INSERT INTO Liste (nom_liste, date_creation) VALUES('$nomListe','$date');";
+                $resultat = $this->connection->query($requete);
+
+                error_log("Res requete : ".$resultat);
+                error_log("Erreur : ".$this->connection->error);
+
+                $id = $this->connection->insert_id;
+
+                $idUser = $_SESSION['id'];
+
+                $requete = "INSERT INTO Privileges VALUES('$id','$idUser','ecriture');";
+
+                $this->connection->query($requete);
+
+                error_log("Res requete : ".$requete);
+                error_log("Erreur : ".$this->connection->error);
+
             }
     }
 
@@ -127,16 +148,14 @@ class ManipBDD
 
             $requete = "INSERT INTO Tache (nom_tache, id_liste, des_tache, date_debut, date_fin, statut) VALUES('$nom','$idListe','$description','$dateDeb','$dateFin','$statut');";
             $this->connection->query($requete);
-            echo $this->connection->error;
+            error_log($this->connection->error);
             return $this->connection->insert_id;
-
 
         } else {
             $requete = "UPDATE Tache SET nom_tache = '$nom', des_tache = '$description', date_debut = '$dateDeb', date_fin = '$dateFin', statut date_creation = '$statut' WHERE id_tache = '$idTache';";
 
             $this->connection->query($requete);
         }
-        echo $this->error;
     }
 
     public function getTaches($id_list)
@@ -146,7 +165,7 @@ class ManipBDD
         $requete = "SELECT * FROM Tache as Tasks NATURAL JOIN Privileges as Droits NATURAL JOIN Utilisateur as Users WHERE Users.id_user='$id' AND Droits.id_user=Users.id_user";
         $requete = "SELECT * FROM Tache WHERE id_liste = '$id_list'";
         $resultat = $this->connection->query($requete);
-        echo $this->connection->error;
+        error_log($this->connection->error);
         return $resultat;
     }
 

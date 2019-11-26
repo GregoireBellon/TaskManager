@@ -20,8 +20,15 @@ class Liste
         if((func_num_args()===1) AND $id == TRUE){
             $this->recupListe($id);
         }
+        elseif(func_num_args()===3){
+            $this->id = $id;
+            $this->nom = $nom;
+            $this->dateCreation=$dateCreation;
+            $this->recupTaches();
+        }
         else{
-            $this->creerListe($id,$nom, $dateCreation, $taches);
+            error_log("CREATION");
+            $this->creerListe($nom, $dateCreation);
         }
 
 
@@ -65,30 +72,36 @@ class Liste
 
         $this->id = $id;
         $list_recup = $this->db->getListe($id);
-        $this->nom = $list_recup->nom;
-        $this->dateCreation = $list_recup->dateCreation;
+        $this->nom = $list_recup->getNom();
+        $this->dateCreation = $list_recup->getDateCreation();
         $this->recupTaches();
-
 
     }
 
-    public function creerListe($id,$nom, $dateCreation, $taches){
+    public function creerListe($nom, $dateCreation){
 
+        $this->id=False;
         $this->nom = $nom;
-        $this->taches = $taches;
 
 
         if($dateCreation==FALSE){
 
             $this->dateCreation = date("Y-m-d H:i");
 
+        }else{
+            $this->dateCreation= $dateCreation;
         }
+
+        error_log("NOM : ".$this->nom);
+        error_log("Date : ".$this->dateCreation);
+
+
         $this->sauvListe();
     }
 
     public function sauvListe(){
 
-        $this->db->sauvegarderListe($this->id, $this->nom, $this->dateCreation);
+        $this->id=$this->db->sauvegarderListe($this->id, $this->nom, $this->dateCreation);
 
     }
 
@@ -111,6 +124,7 @@ class Liste
         //echo "<input type=\"hidden\" name=\"taches\" value=\"$this->taches\">";
         echo "<input type='submit' value='$this->nom'>";
         echo "</form>";
+
     }
 
     public function ajouterTache($tache){
