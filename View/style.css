@@ -107,7 +107,7 @@ body {
     cursor: pointer;
 }
 
-.error{
+.error {
     color: #f74040;
     font-style: italic;
     font-weight: bold;
@@ -115,4 +115,42 @@ body {
     font-family: "DejaVu Serif";
     position: absolute;
     margin-left: 1.35%;
+}
+
+.tache{
+    margin-top: 3vh;
+    background-color: #4CAF50;
+    width: 50vw;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: solid;
+    border-color: black;
+}
+.nom_tache{
+
+    font-size: 1.5em;
+    text-align: center;
+    width: auto;
+    color: #ecf0f1;
+
+}
+.description_tache{
+
+}
+.date_tache{
+display: inline-block;
+}
+.date_debut_tache{
+
+    display: block;
+
+}
+.date_fin_tache{
+
+    display: block;
+
+}
+.status_tache{
+
 }

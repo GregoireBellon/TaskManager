@@ -12,8 +12,7 @@ class Tache
     {
 
         $this->db = new ManipBDD();
-
-       $this->idListe = $idListe;
+        $this->idListe = $idListe;
         $this->nom = $nom;
         $this->description = $description;
         $this->dateDeb = $dateDeb;
@@ -39,14 +38,12 @@ class Tache
 
     public function afficherTache(){
         echo "<div class='tache'>
-   
-   <div class='nom_tache'>".$this->nom."</div> <br>
-   <div class='description_tache'>DESCRIPTION : ".$this->description."</div><br>
-   <div class='date_debut_tache'>DATE DEBUT :".$this->dateDeb."</div><br>
-   <div class='date_fin_tache'>DATE FIN :".$this->dateFin."</div><br>
-   <div class='status_tache'>STATUS :".$this->statut."</div><br>
-
-
+   <div class='nom_tache'>".$this->nom."</div> 
+   <div class='description_tache'>DESCRIPTION : ".$this->description."</div>
+   <div class='status_tache'>STATUS :".$this->statut."</div>
+   <div class='dates_tache'>
+   <div class='date_debut_tache'>DATE DEBUT :".$this->dateDeb."</div>
+   <div class='date_fin_tache'>DATE FIN :".$this->dateFin."</div></div>
         </div>";
     }
 

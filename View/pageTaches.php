@@ -24,6 +24,7 @@ $taches = $liste->getTaches();
 <head>
     <meta charset="UTF-8">
     <title>Tâches <?php echo $liste->getNom()?></title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <html>
 <body>
