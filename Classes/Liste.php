@@ -83,14 +83,12 @@ class Liste
             $this->dateCreation = date("Y-m-d H:i");
 
         }
+        $this->sauvListe();
     }
 
     public function sauvListe(){
 
         $this->db->sauvegarderListe($this->id, $this->nom, $this->dateCreation);
-        #foreach ($this->taches as $tache){
-        #   $t = new Tache($tache);
-        #}
 
     }
 
@@ -110,7 +108,7 @@ class Liste
         echo "<input type=\"hidden\" name=\"id\" value=\"$this->id\">";
         echo "<input type=\"hidden\" name=\"nom\" value=\"$this->nom\">";
         echo "<input type=\"hidden\" name=\"date\" value=\"$this->dateCreation\">";
-        echo "<input type=\"hidden\" name=\"taches\" value=\"$this->taches\">";
+        //echo "<input type=\"hidden\" name=\"taches\" value=\"$this->taches\">";
         echo "<input type='submit' value='$this->nom'>";
         echo "</form>";
     }

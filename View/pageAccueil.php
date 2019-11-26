@@ -20,27 +20,23 @@
         <h1>Bienvenue, <?php echo $_SESSION["username"]?> !</h1>
         <ul>
             <?php
-
+            $listes = null;
             $db= new ManipBDD();
             $result=$db->listesUtilisateur($_SESSION["username"]);
 
-
-
             while ($row = $result->fetch_row())
             {
-
                 $l = new Liste($row[0]);
-
                 $listes[$l->getId()] = $l;
                 $l->afficherListe();
+            }
+            if ($listes == null){
+                echo "<p> Vous n'avez aucune liste créée.</p>";
+                $listes = null;
             }
             $_SESSION['listes'] = $listes;
             ?>
         </ul>
-
-        <form action="../Scripts/accesTaches.php" method="post" id="boutonDeconnnexion">
-            <p><input type="submit" value="AccesTaches" class="bouton"/></p>
-        </form>
 
     <form action="../Scripts/acces_ajout.php" method="post">
 

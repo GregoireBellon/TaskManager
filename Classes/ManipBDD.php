@@ -98,11 +98,10 @@ class ManipBDD
 
     public function sauvegarderListe($idListe, $nomListe, $date)
     {
-        if ($idListe != FALSE) {
             if ($idListe != FALSE) {
                 $id = $idListe;
                 $requete = "UPDATE Liste SET nom_liste = '$nomListe', date_creation ='$date' WHERE id_liste = '$idListe'";
-
+                $this->connection->query($requete);
             } else {
                 $requete = "INSERT INTO Liste (nom_liste, date_creation) VALUES('$nomListe','$date'); SELECT  LAST_INSERT_ID();";
                 $id = strval($this->connection->query($requete));
@@ -110,8 +109,6 @@ class ManipBDD
                 $requete = "INSERT INTO Privileges VALUES('$id','$idUser',ecriture);";
                 $this->connection->query($requete);
             }
-            return $id;
-        }
     }
 
 
