@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f7556f10-7bc5-4474-8a36-a526c31e8115" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="ProjectId" id="1TCkC5qevKjDdcuX8VJzlX0tdro" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../NuitInfo/MatchMakingy" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Colin\Documents\IUT laval\php\sprint2\app\kernel" />
+      <recent name="C:\Users\Colin\Documents\IUT laval\php\sprint2\app" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="View.php" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://51.91.122.109/sprint2/app/view/View.php">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.View.php" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f7556f10-7bc5-4474-8a36-a526c31e8115" name="Default Changelist" comment="" />
+      <created>1572971334014</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1572971334014</updated>
+      <workItem from="1572971335284" duration="822000" />
+      <workItem from="1573995825707" duration="2888000" />
+      <workItem from="1574262166759" duration="4254000" />
+      <workItem from="1574325814557" duration="368000" />
+      <workItem from="1574330792793" duration="11276000" />
+      <workItem from="1574442910289" duration="29000" />
+      <workItem from="1574624974545" duration="5615000" />
+      <workItem from="1574671869796" duration="8002000" />
+      <workItem from="1574942195920" duration="71000" />
+      <workItem from="1574942825262" duration="811000" />
+      <workItem from="1575568434953" duration="822000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>
